@@ -36,7 +36,7 @@ const Header = () => {
       <div className={`${styles.container} container`}>
         <div className={styles.logo}>
           <Link to="Top" smooth={true} duration={500}>
-            <img src={img} />
+            <img src={img} fetchPriority="high"/>
           </Link>
         </div>
         <nav>
