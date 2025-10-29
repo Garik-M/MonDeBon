@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className={`${styles.wrapper} container`}>
-        <div>addf</div>
+        <div></div>
       </div>
     </footer>
   );
