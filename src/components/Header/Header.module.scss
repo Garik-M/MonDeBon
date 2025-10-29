@@ -2,19 +2,19 @@
 
 header {
   @include flex();
-  position: sticky;
-  top: 0px;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
   width: 100%;
   height: 70px;
 
   .container {
-    @include flex(space-between, $gap: 200px);
+    @include flex(space-between, $gap: 50px);
     height: 100%;
 
     .logo {
-      width: 200px;
+      min-width: 200px;
       height: 100%;
 
       img {
@@ -32,7 +32,69 @@ header {
         cursor: pointer;
         text-decoration: none;
         color: $black;
+        text-wrap: nowrap;
+      }
+      @media (max-width: 978px) {
+        display: none;
       }
     }
+    .list {
+      cursor: pointer;
+      @media (min-width: 978px) {
+        display: none;
+      }
+      .mobileNav {
+        @include flex(end, start);
+        width: 100%;
+        height: calc(100vh - 70px);
+        position: absolute;
+        top: 70px;
+        right: 0px;
+        background: rgba(255, 255, 255, 0.4);
+        z-index: 3;
+        animation: entry 0.4s ease;
+
+        @media (min-width: 978px) {
+          display: none;
+        }
+
+        .bar {
+          @include flex(start, end, $dir: column);
+          width: 80%;
+          height: 100%;
+          backdrop-filter: blur(200px);
+          background-color: #fff;
+          padding: 10px 0 0;
+
+          a {
+            @include flex;
+            width: 100%;
+            height: 50px;
+            position: relative;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: $dark;
+            user-select: none;
+
+            &:hover{
+              background-color: rgb(30, 30, 30);
+              color: $orange;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@keyframes entry {
+  from {
+    transform: translateX(1000px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
