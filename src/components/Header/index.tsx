@@ -43,11 +43,11 @@ const Header = () => {
           <Link to="Top" smooth={true} duration={500}>
             Գլխավոր Էջ
           </Link>
-          <Link to="Services" smooth={true} duration={500}>
-            Մեր Ծառայությունները
-          </Link>
           <Link to="About" smooth={true} duration={500}>
             Մեր Մասին
+          </Link>
+          <Link to="Services" smooth={true} duration={500}>
+            Մեր Ծառայությունները
           </Link>
           <Link to="Contact" smooth={true} duration={500}>
             Կապ Մեզ Հետ
