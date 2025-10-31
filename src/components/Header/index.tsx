@@ -65,11 +65,11 @@ const Header = () => {
                 <Link to="Top" smooth={true} duration={500} onClick={openBar}>
                   Գլխավոր Էջ
                 </Link>
-                <Link to="Services" smooth={true} duration={500} onClick={openBar}>
-                  Մեր Ծառայությունները
-                </Link>
                 <Link to="About" smooth={true} duration={500} onClick={openBar}>
                   Մեր Մասին
+                </Link>
+                <Link to="Services" smooth={true} duration={500} onClick={openBar}>
+                  Մեր Ծառայությունները
                 </Link>
                 <Link to="Contact" smooth={true} duration={500} onClick={openBar}>
                   Կապ Մեզ Հետ

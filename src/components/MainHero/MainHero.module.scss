@@ -1,10 +1,5 @@
 @import "@styles/App.scss";
 
-* {
-  translate: none;
-  rotate: none;
-  scale: none;
-}
 .mainHero {
   @include flex;
   background-image: url("@/assets/images/sky.jpg");
@@ -12,6 +7,7 @@
   min-height: 100vh;
   height: 100%;
   background-size: 100% 100%;
+  overflow-x: hidden;
 
   .clouds {
     position: absolute;
@@ -36,6 +32,9 @@
       @media (max-width: 978px) {
         filter: blur(1.5px);
       }
+      @media (max-width: 550px) {
+        width: 200px;
+      }
 
       // bottom left
       &:nth-child(1) {
@@ -57,6 +56,13 @@
           width: 350px;
           left: 10%;
         }
+        @media (max-width: 977px) {
+          width: 300px;
+          left: 7%;
+        }
+        @media (max-width: 550px) {
+          width: 260px;
+        }
       }
       // top right
       &:nth-child(4) {
@@ -68,24 +74,46 @@
           width: 350px;
           right: 15%;
         }
+        @media (max-width: 977px) {
+          width: 300px;
+          right: 10%;
+        }
+        @media (max-width: 550px) {
+          width: 250px;
+          top: 17%;
+          right: 3%;
+        }
       }
       // bottom mid
       &:nth-child(5) {
         top: 60%;
         left: 35%;
+
+        @media (max-width: 850px) {
+          display: none;
+        }
       }
     }
   }
 
   .main {
     @include flex(start, $gap: 50px);
+    max-width: 100%;
+    @media (max-width: 766px) {
+      gap: 0px;
+    }
+
     .hero1 {
-      width: 350px;
-      height: 700px;
+      min-width: 350px;
+      min-height: 700px;
       position: relative;
       @media (max-width: 1100px) {
-        width: 250px;
-        height: 600px;
+        min-width: 250px;
+        min-height: 600px;
+      }
+      @media (max-width: 766px) {
+        min-width: 200px;
+        min-height: 500px;
       }
       .hero {
         position: absolute;
@@ -114,6 +142,10 @@
           width: 400px;
           height: 170px;
         }
+        @media (max-width: 766px) {
+          width: 300px;
+          height: 150px;
+        }
       }
     }
     .welcome {
@@ -123,24 +155,27 @@
       font-family: "Roboto";
       font-weight: 500;
       letter-spacing: 1px;
-      line-height: 40px;
+      line-height: 45px;
       color: $dark;
       user-select: none;
       margin: 0 0 100px 0;
       z-index: 2;
       animation: entry 1.3s ease-in-out;
 
-      @media (max-width: 600px) {
-        font-size: 22px;
-        letter-spacing: 0.4px;
-        line-height: normal;
-        width: 250px;
-      }
       @media (max-width: 1100px) {
         font-size: 26px;
-        letter-spacing: 0.4px;
-        line-height: 40px;
+        line-height: 35px;
         width: 400px;
+      }
+      @media (max-width: 766px) {
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: 0.4px;
+      }
+      @media (max-width: 600px) {
+        font-size: 20px;
+        line-height: 28px;
+        width: 250px;
       }
     }
   }
@@ -154,7 +189,7 @@
   }
   to {
     transform: translateY(0px);
-    line-height: 40px;
+    line-height: calc(normal + 20px);
     opacity: 1;
   }
 }
