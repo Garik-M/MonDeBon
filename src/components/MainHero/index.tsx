@@ -13,8 +13,8 @@ const MainHero = () => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
 
     const factors = clouds.map(() => ({
-      x: gsap.utils.random(-50, 50),
-      y: gsap.utils.random(-40, 40),
+      x: gsap.utils.random(-40, 40),
+      y: gsap.utils.random(-35, 35),
       speed: gsap.utils.random(0.6, 1),
     }));
 
@@ -27,7 +27,7 @@ const MainHero = () => {
         gsap.to(cloud, {
           x: x * fx * 3,
           y: y * fy * 3,
-          duration: speed,
+          duration: speed + 0.2,
           ease: "power2.out",
           overwrite: "auto",
         });
@@ -39,13 +39,12 @@ const MainHero = () => {
   }, []);
 
   useGSAP(() => {
-    // Animate hero from left on load
     gsap.from("#hero", {
-      x: 800,
+      x: 700,
       opacity: 0,
       scale: 0.8,
       duration: 1.5,
-      ease: "power3.out",
+      ease: "power2.out",
     });
   }, []);
 
@@ -90,7 +89,6 @@ const MainHero = () => {
             <img
               className={styles.hero}
               src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
-              fetchPriority="high"
             />
             <img
               className={styles.cloud}
