@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import styles from "./MainHero.module.scss";
 import { useGSAP } from "@gsap/react";
-import { useEffect } from "react";
 import cloud1 from "@assets/images/cloud1.png";
 import cloud2 from "@assets/images/cloud2.png";
 import cloud3 from "@assets/images/cloud3.png";
@@ -10,7 +9,7 @@ import cloud4 from "@assets/images/cloud4.png";
 const MainHero = () => {
   gsap.registerPlugin(useGSAP);
 
-  useEffect(() => {
+  useGSAP(() => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
 
     const factors = clouds.map(() => ({
@@ -38,6 +37,18 @@ const MainHero = () => {
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
+
+  useGSAP(() => {
+    // Animate hero from left on load
+    gsap.from("#hero", {
+      x: 800,
+      opacity: 0,
+      scale: 0.8,
+      duration: 1.5,
+      ease: "power3.out",
+    });
+  }, []);
+
 
   return (
     <section className={styles.mainHero} id={"Top"}>
@@ -79,6 +90,7 @@ const MainHero = () => {
             <img
               className={styles.hero}
               src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              fetchPriority="high"
             />
             <img
               className={styles.cloud}
