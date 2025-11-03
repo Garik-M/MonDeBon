@@ -63,31 +63,30 @@ header {
         @include flex(end, start);
         width: 100%;
         height: calc(100vh - 70px);
-        position: absolute;
+        position: fixed;
         top: 70px;
         right: 0px;
-        background: rgba(255, 255, 255, 0.4);
-        z-index: 3;
+        z-index: 200;
         animation: entry 0.4s ease;
-        
+
         @media (min-width: 978px) {
           display: none;
         }
-        
+
         .bar {
-          cursor: pointer;
-          @include flex(start, end, $dir: column);
+          position: relative;
           width: 80%;
           height: 100%;
-          backdrop-filter: blur(200px);
-          background-color: #fff;
+          cursor: pointer;
+          @include flex(start, $dir: column);
+          background-color: rgba(255, 255, 255, 0.2);
 
           a {
             @include flex;
             width: 100%;
             height: 50px;
             position: relative;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             letter-spacing: 1px;
             text-decoration: none;
@@ -95,8 +94,8 @@ header {
             user-select: none;
 
             &:hover {
-              background-color: rgb(30, 30, 30);
-              color: $orange;
+              background-color: rgba(255, 255, 255, 0.3);
+              backdrop-filter: blur(50px);
             }
           }
         }
@@ -115,7 +114,7 @@ header {
 }
 
 @keyframes underline {
-  from{
+  from {
     width: 0%;
   }
   to {
