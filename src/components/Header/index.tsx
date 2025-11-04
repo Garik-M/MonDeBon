@@ -40,16 +40,16 @@ const Header = () => {
           </Link>
         </div>
         <nav>
-          <Link to="Top" smooth={true} duration={500}>
+          <Link to="Top" smooth={true} duration={1000}>
             Գլխավոր Էջ
           </Link>
-          <Link to="About" smooth={true} duration={500}>
+          <Link to="About" smooth={true} duration={1000}>
             Մեր Մասին
           </Link>
-          <Link to="Services" smooth={true} duration={500}>
+          <Link to="Services" smooth={true} duration={1000}>
             Մեր Ծառայությունները
           </Link>
-          <Link to="Contact" smooth={true} duration={500}>
+          <Link to="Contact" smooth={true} duration={1000}>
             Կապ Մեզ Հետ
           </Link>
         </nav>
@@ -62,16 +62,16 @@ const Header = () => {
           {isOpen ? (
             <div className={styles.mobileNav}>
               <div className={styles.bar}>
-                <Link to="Top" smooth={true} duration={500} onClick={openBar}>
+                <Link to="Top" smooth={true} duration={1000} onClick={openBar}>
                   Գլխավոր Էջ
                 </Link>
-                <Link to="About" smooth={true} duration={500} onClick={openBar}>
+                <Link to="About" smooth={true} duration={1000} onClick={openBar}>
                   Մեր Մասին
                 </Link>
-                <Link to="Services" smooth={true} duration={500} onClick={openBar}>
+                <Link to="Services" smooth={true} duration={1000} onClick={openBar}>
                   Մեր Ծառայությունները
                 </Link>
-                <Link to="Contact" smooth={true} duration={500} onClick={openBar}>
+                <Link to="Contact" smooth={true} duration={1000} onClick={openBar}>
                   Կապ Մեզ Հետ
                 </Link>
               </div>

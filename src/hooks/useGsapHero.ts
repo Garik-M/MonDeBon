@@ -71,7 +71,7 @@ export const useGsapHero = () => {
     gsap.from("#hero2", {
       scrollTrigger: {
         trigger: "#hero2",
-        start: "entry 80%",
+        start: "entry 75%",
         end: "bottom 90%",
         scrub: true,
         markers: false,
@@ -79,8 +79,30 @@ export const useGsapHero = () => {
       x: -700,
       opacity: 0,
       scale: 0.6,
-      duration: 1.5,
       ease: "power2.out",
     });
+  }, []);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      "#hero2",
+      {
+        x: 0,
+        scale: 1,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#hero2",
+          start: "500 500",
+          end: "500 300",
+          scrub: true,
+          markers: true,
+        },
+        force3D: true,
+        scale: 0.6,
+        x: -700,
+        ease: "none",
+      }
+    );
   }, []);
 };

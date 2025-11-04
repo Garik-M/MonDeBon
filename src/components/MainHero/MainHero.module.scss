@@ -3,7 +3,10 @@
 html,
 body {
   background-image: url("@/assets/images/sky.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .mainHero {
   @include flex;
   width: 100%;
