@@ -4,12 +4,21 @@ import { useEffect } from "react";
 
 const App = () => {
   useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-      window.scrollTo(0, 0);
-    }
+    const handleLoad = () => {
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }, 100);
+    };
+
+    window.addEventListener("load", handleLoad);
+
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
-  
+
   return (
     <>
       <Home />
