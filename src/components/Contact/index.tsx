@@ -27,21 +27,25 @@ const ContactUs = () => {
 
   return (
     // <div className={styles.contactUs}>
-      <div className={`${styles.contact} container`} id="Contact">
+    <div className="container">
+      <div className={styles.contact} id="Contact">
         <form ref={form} onSubmit={sendEmail}>
           <div className={styles.container}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Անուն</label>
             <input type="text" name="user_name" id="name" />
           </div>
           <div className={styles.container}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Էլ. հասցե</label>
             <input type="email" name="user_email" id="email" />
           </div>
-          <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" />
+          <div className={styles.areaContainer}>
+            <label htmlFor="textarea">Հաղորդագրություն</label>
+            <textarea name="message" id="textarea" />
+          </div>
+          <input type="submit" value="Ուղարկել" />
         </form>
       </div>
+    </div>
     // </div>
   );
 };

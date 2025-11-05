@@ -3,6 +3,7 @@
 // .contactUs {
 //   position: relative;
 .contact {
+  @include flex;
   position: relative;
   width: 100%;
   height: 500px;
@@ -31,7 +32,7 @@
       label {
         transition: 0.4s;
         position: absolute;
-        background-color: white;
+        background-color: $white;
         padding: 0 3px;
         top: 50%;
         left: 50%;
@@ -52,12 +53,63 @@
         padding: 0 10px;
         border: none;
         border-radius: 10px;
+        font-size: 18px;
 
         &:focus {
           outline: none;
         }
         cursor: pointer;
       }
+    }
+    .areaContainer {
+      @include flex;
+      position: relative;
+      width: 300px;
+      border: 1px solid black;
+      border-radius: 10px;
+
+      label {
+        transition: 0.4s;
+        position: absolute;
+        background-color: $white;
+        padding: 0 3px;
+        top: 40%;
+        left: 50%;
+        translate: -50% -50%;
+        cursor: pointer;
+
+        &:has(+ textarea:focus) {
+          top: -10px;
+          left: 10px;
+          translate: 0;
+          color: #00000075;
+        }
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        padding: 15px 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 17px;  
+
+        &:focus {
+          outline: none;
+        }
+        cursor: pointer;
+        resize: none;
+      }
+    }
+    input[type=submit]{
+      width: 300px;
+      height: 45px;
+      border-radius: 10px;
+      border: none;
+      background-color: $orange;
+      font-size: 18px;
+      letter-spacing: .4px;
+      cursor: pointer;
     }
   }
 }
