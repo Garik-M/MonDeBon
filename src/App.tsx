@@ -6,15 +6,10 @@ const App = () => {
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
     }
-
-    // give browser a moment to hydrate & paint
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, 0);
-
-    return () => clearTimeout(timer);
   }, []);
+  
   return (
     <>
       <Home />
