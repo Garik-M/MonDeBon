@@ -96,7 +96,7 @@ export const useGsapHero = () => {
           start: "500 500",
           end: "500 300",
           scrub: true,
-          markers: true,
+          markers: false,
         },
         force3D: true,
         scale: 0.6,

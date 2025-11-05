@@ -1,10 +1,30 @@
 import styles from "./Contact.module.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Input from "@components/Input";
+import type { InputData } from "@/types";
 
 const ContactUs = () => {
   const form = useRef<HTMLFormElement>(null);
-
+  const [isFilled, setIsFilled] = useState<boolean>(false);
+  const inputArr: InputData[] = [
+    {
+      value: "Անուն",
+      id: "name",
+    },
+    {
+      value: "Էլ. Հասցե",
+      id: "email",
+    },
+    {
+      value: "Հասցե",
+      id: "address",
+    },
+    {
+      value: "Հեռախոսահամար",
+      id: "tel",
+    },
+  ];
   const sendEmail = (e: any) => {
     e.preventDefault();
 
@@ -24,23 +44,27 @@ const ContactUs = () => {
         }
       );
   };
+  const filled = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (!isFilled) {
+      setIsFilled(true);
+    } else if (e.target.value.trim() === "") {
+      setIsFilled(false);
+    }
+  };
 
   return (
     // <div className={styles.contactUs}>
     <div className="container">
       <div className={styles.contact} id="Contact">
         <form ref={form} onSubmit={sendEmail}>
-          <div className={styles.container}>
-            <label htmlFor="name">Անուն</label>
-            <input type="text" name="user_name" id="name" />
-          </div>
-          <div className={styles.container}>
-            <label htmlFor="email">Էլ. հասցե</label>
-            <input type="email" name="user_email" id="email" />
-          </div>
-          <div className={styles.areaContainer}>
-            <label htmlFor="textarea">Հաղորդագրություն</label>
-            <textarea name="message" id="textarea" />
+          {inputArr.map((val) => (
+            <Input value={val} />
+          ))}
+          <div className={styles.areaWrapper}>
+            <label htmlFor="textarea" className={isFilled ? styles.filled : ""}>
+              Հաղորդագրություն
+            </label>
+            <textarea name="message" id="textarea" onChange={filled} />
           </div>
           <input type="submit" value="Ուղարկել" />
         </form>
