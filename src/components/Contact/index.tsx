@@ -53,24 +53,27 @@ const ContactUs = () => {
   };
 
   return (
-    // <div className={styles.contactUs}>
-    <div className="container">
-      <div className={styles.contact} id="Contact">
-        <form ref={form} onSubmit={sendEmail}>
-          {inputArr.map((val) => (
-            <Input value={val} />
-          ))}
-          <div className={styles.areaWrapper}>
-            <label htmlFor="textarea" className={isFilled ? styles.filled : ""}>
-              Հաղորդագրություն
-            </label>
-            <textarea name="message" id="textarea" onChange={filled} />
-          </div>
-          <input type="submit" value="Ուղարկել" />
-        </form>
+    <div className={styles.contactUs}>
+      <div className="container">
+        <div className={styles.contact} id="Contact">
+          <form ref={form} onSubmit={sendEmail}>
+            {inputArr.map((val) => (
+              <Input value={val} />
+            ))}
+            <div className={styles.areaWrapper}>
+              <label
+                htmlFor="textarea"
+                className={isFilled ? styles.filled : ""}
+              >
+                Հաղորդագրություն
+              </label>
+              <textarea name="message" id="textarea" onChange={filled} />
+            </div>
+            <input type="submit" value="Ուղարկել" />
+          </form>
+        </div>
       </div>
     </div>
-    // </div>
   );
 };
 
