@@ -27,7 +27,8 @@ header {
     }
     nav {
       @include flex($gap: 40px);
-      font-size: 18px;
+      font-size: 22px;
+      letter-spacing: .5px;
 
       a {
         position: relative;

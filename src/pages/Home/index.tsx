@@ -7,15 +7,13 @@ import ContactUs from "@/components/Contact";
 
 const Home = () => {
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Header />
-        <MainHero />
-        <About />
-        <ContactUs />
-        <Footer />
-      </div>
-    </>
+    <div className={styles.wrapper}>
+      <Header />
+      <MainHero />
+      <About />
+      <ContactUs />
+      <Footer />
+    </div>
   );
 };
 

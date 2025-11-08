@@ -3,6 +3,7 @@ import cloud1 from "@assets/images/cloud1.png";
 import cloud2 from "@assets/images/cloud2.png";
 import cloud3 from "@assets/images/cloud3.png";
 import cloud4 from "@assets/images/cloud4.png";
+import sky from "@/assets/images/sky.png";
 import { useGsapHero } from "@hooks/useGsapHero";
 
 const MainHero = () => {
@@ -11,6 +12,7 @@ const MainHero = () => {
 
   return (
     <section className={styles.mainHero} id="Top">
+      <img src={sky} className={styles.background}/>
       <div className={styles.clouds}>
         {clouds.map((val, i) => (
           <img

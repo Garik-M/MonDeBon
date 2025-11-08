@@ -57,8 +57,8 @@ const ContactUs = () => {
       <div className="container">
         <div className={styles.contact} id="Contact">
           <form ref={form} onSubmit={sendEmail}>
-            {inputArr.map((val) => (
-              <Input value={val} />
+            {inputArr.map((val, i) => (
+              <Input value={val} key={i}/>
             ))}
             <div className={styles.areaWrapper}>
               <label
