@@ -11,7 +11,7 @@ const App = () => {
 
       setTimeout(() => {
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      }, 100);
+      }, 10);
     };
 
     window.addEventListener("load", handleLoad);

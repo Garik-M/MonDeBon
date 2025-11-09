@@ -3,8 +3,9 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-export const useGsapHero = () => {
 
+export const useGsapHero = () => {
+  // Cloud mouse parallax
   useGSAP(() => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
 
@@ -34,75 +35,78 @@ export const useGsapHero = () => {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
+  // Hero Right
   useGSAP(() => {
-    gsap.from("#hero1", {
-      x: 700,
-      opacity: 0,
-      scale: 0.8,
-      duration: 1.5,
-      ease: "power2.out",
-    });
-  }, []);
-
-  useGSAP(() => {
-    gsap.fromTo(
-      "#hero1",
-      {
-        x: 0,
-        scale: 1,
-      },
-      {
-        scrollTrigger: {
-          trigger: "#hero1",
-          start: "500 500",
-          end: "500 300",
-          scrub: true,
-          markers: false,
-        },
-        force3D: true,
-        scale: 0.6,
+    setTimeout(() => {
+      gsap.from("#heroRight", {
         x: 700,
-        ease: "none",
-      }
-    );
+        opacity: 0,
+        scale: 0.8,
+        duration: 1.5,
+        ease: "power2.out",
+      });
+
+      gsap.fromTo(
+        "#heroRight",
+        { x: 0, scale: 1 },
+        {
+          scrollTrigger: {
+            trigger: "#heroRight",
+            start: "top 10%",
+            end: "center 30%",
+            scrub: true,
+            markers: false,
+          },
+          x: 700,
+          scale: 0.6,
+          ease: "none",
+        }
+      );
+
+      ScrollTrigger.refresh();
+    }, 10);
   }, []);
 
+  // Hero Left
   useGSAP(() => {
-    gsap.from("#hero2", {
-      scrollTrigger: {
-        trigger: "#hero2",
-        start: "entry 75%",
-        end: "bottom 90%",
-        scrub: true,
-        markers: false,
-      },
-      x: -700,
-      opacity: 0,
-      scale: 0.6,
-      ease: "power2.out",
-    });
-  }, []);
+    setTimeout(() => {
+      // Entry: slide in from left
+      gsap.fromTo(
+        "#heroLeft",
+        { x: -700, opacity: 0, scale: 0.6 },
+        {
+          scrollTrigger: {
+            trigger: "#heroLeft",
+            start: "top bottom",
+            end: "top 40%",
+            scrub: true,
+            markers: false,
+          },
+          x: 0,
+          opacity: 1,
+          scale: 1,
+        }
+      );
 
-  useGSAP(() => {
-    gsap.fromTo(
-      "#hero2",
-      {
-        x: 0,
-        scale: 1,
-      },
-      {
-        scrollTrigger: {
-          trigger: "#hero2",
-          start: "500 500",
-          end: "500 300",
-          scrub: true,
-          markers: false,
-        },
-        force3D: true,
-        scale: 0.6,
-        x: -700,
-        ease: "none",
-      }
-    );
+      // Scroll effect: slide back left while scaling down
+      gsap.fromTo(
+        "#heroLeft",
+        { x: 0, scale: 1 },
+        {
+          scrollTrigger: {
+            trigger: "#heroLeft",
+            start: "top 20%",
+            end: "center 30%",
+            scrub: true,
+            markers: false,
+          },
+          x: -700,
+          scale: 0.6,
+          ease: "none",
+        }
+      );
+
+      ScrollTrigger.refresh();
+    }, 10);
   }, []);
 };

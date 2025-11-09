@@ -8,54 +8,62 @@ import { useGsapHero } from "@hooks/useGsapHero";
 
 const MainHero = () => {
   useGsapHero();
+
   const clouds = [cloud1, cloud2, cloud1, cloud3, cloud4];
 
+  const cloudimages = clouds.map((val, i) => (
+    <img
+      key={i}
+      src={val}
+      className={`${styles.cloud} cloud`}
+      fetchPriority="high"
+    />
+  ));
   return (
     <section className={styles.mainHero} id="Top">
-      <img src={sky} className={styles.background}/>
-      <div className={styles.clouds}>
-        {clouds.map((val, i) => (
-          <img
-            key={i}
-            src={val}
-            className={`${styles.cloud} cloud`}
-            fetchPriority="high"
-          />
-        ))}
-      </div>
-      <div className={`container`}>
+      <img src={sky} className={styles.background} />
+
+      <div className={styles.clouds}>{cloudimages}</div>
+
+      <div className="container">
         <div className={styles.main}>
-          <p className={styles.welcome} id="text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            aliquid vero pariatur quaerat animi aut molestias. Architecto magni
-            natus labore?
+          <p className={styles.welcome}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, odio
+            ullam iure neque itaque pariatur repellendus architecto eligendi
+            optio voluptatum.
           </p>
-          <div className={styles.hero1} id="hero1">
+
+          <div className={styles.hero1} id="heroRight">
             <img
               className={styles.hero}
               src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              alt="Hero 1"
             />
             <img
-              className={styles.cloud}
+              className={styles.heroCloud}
               src="https://clipart-library.com/img/1887208.png"
+              alt="Hero Cloud 1"
             />
           </div>
         </div>
+
         <div className={styles.main}>
-          <div className={styles.hero1} id="hero2">
+          <div className={styles.hero1} id="heroLeft">
             <img
               className={styles.hero}
               src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              alt="Hero 2"
             />
             <img
-              className={styles.cloud}
+              className={styles.heroCloud}
               src="https://clipart-library.com/img/1887208.png"
+              alt="Hero Cloud 2"
             />
           </div>
-          <p className={styles.welcome} id="text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            aliquid vero pariatur quaerat animi aut molestias. Architecto magni
-            natus labore?
+          <p className={styles.welcome}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+            excepturi architecto cupiditate vero incidunt temporibus laudantium
+            aut eaque reiciendis provident?
           </p>
         </div>
       </div>
