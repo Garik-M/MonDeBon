@@ -1,5 +1,5 @@
 import styles from "./Loading.module.scss";
-import logo from "@assets/images/loading.mp4";
+import logo from "@assets/Video/loading.mp4";
 
 const Loading = () => {
   return (

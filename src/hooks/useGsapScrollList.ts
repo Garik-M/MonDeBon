@@ -54,23 +54,23 @@ export const useGsapScrollList = () => {
       if (i < positions.length - 1) tl.to({}, { duration: 0.3 });
     });
 
-    const imgs = textBlocksContainer.querySelectorAll("img");
-    if (imgs.length) {
-      Promise.all(
-        Array.from(imgs).map(
-          (img) =>
-            new Promise<void>((resolve) => {
-              if (img.complete) resolve();
-              else {
-                img.addEventListener("load", () => resolve(), { once: true });
-                img.addEventListener("error", () => resolve(), { once: true });
-              }
-            })
-        )
-      ).then(() => ScrollTrigger.refresh());
-    } else {
-      ScrollTrigger.refresh();
-    }
+    // const imgs = textBlocksContainer.querySelectorAll("img");
+    // if (imgs.length) {
+    //   Promise.all(
+    //     Array.from(imgs).map(
+    //       (img) =>
+    //         new Promise<void>((resolve) => {
+    //           if (img.complete) resolve();
+    //           else {
+    //             img.addEventListener("load", () => resolve(), { once: true });
+    //             img.addEventListener("error", () => resolve(), { once: true });
+    //           }
+    //         })
+    //     )
+    //   ).then(() => ScrollTrigger.refresh());
+    // } else {
+    //   ScrollTrigger.refresh();
+    // }
 
     return () => {
       tl.kill();

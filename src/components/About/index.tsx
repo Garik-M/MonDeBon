@@ -16,7 +16,7 @@ const About: React.FC = () => {
   return (
     <section className={styles.about} id="About">
       <div className={styles.rainbow}>
-        <img src="https://gallery.yopriceville.com/downloadfullsize/send/14564" />
+        <img src="https://gallery.yopriceville.com/downloadfullsize/send/14564" alt="rainbow"/>
       </div>
       <div className={styles.wrapper}>
         <div className="container">

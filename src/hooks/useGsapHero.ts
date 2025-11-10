@@ -52,8 +52,8 @@ export const useGsapHero = () => {
         {
           scrollTrigger: {
             trigger: "#heroRight",
-            start: "top 10%",
-            end: "center 30%",
+            start: "top top",
+            end: "bottom center",
             scrub: true,
             markers: false,
           },
@@ -95,10 +95,10 @@ export const useGsapHero = () => {
         {
           scrollTrigger: {
             trigger: "#heroLeft",
-            start: "top 20%",
-            end: "center 30%",
+            start: "top top",
+            end: "bottom top",
             scrub: true,
-            markers: false,
+            markers: true,
           },
           x: -700,
           scale: 0.6,

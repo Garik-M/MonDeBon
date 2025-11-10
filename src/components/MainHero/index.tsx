@@ -17,11 +17,12 @@ const MainHero = () => {
       src={val}
       className={`${styles.cloud} cloud`}
       fetchPriority="high"
+      alt={`cloud${i}`}
     />
   ));
   return (
     <section className={styles.mainHero} id="Top">
-      <img src={sky} className={styles.background} />
+      <img src={sky} className={styles.background} alt=""/>
 
       <div className={styles.clouds}>{cloudimages}</div>
 
