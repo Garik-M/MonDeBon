@@ -22,16 +22,17 @@ const MainHero = () => {
   ));
   return (
     <section className={styles.mainHero} id="Top">
-      <img src={sky} className={styles.background} alt=""/>
+      <img src={sky} className={styles.background} alt="" />
 
       <div className={styles.clouds}>{cloudimages}</div>
 
       <div className="container">
         <div className={styles.main}>
           <p className={styles.welcome}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, odio
-            ullam iure neque itaque pariatur repellendus architecto eligendi
-            optio voluptatum.
+            Մոնը՝ երազանքի ուժն է։ Բարի, նուրբ ու մի քիչ երազկոտ։ Նա սիրում է
+            նայել երկնքին, գտնել նոր գաղափարներ ամպերի մեջ և հավատալ, որ ամեն
+            բան հնարավոր է։ Մոնը փոքրիկներին սովորեցնում է տեսնել հրաշքը ամեն
+            մանրուքում
           </p>
 
           <div className={styles.hero1} id="heroRight">
@@ -62,9 +63,9 @@ const MainHero = () => {
             />
           </div>
           <p className={styles.welcome}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-            excepturi architecto cupiditate vero incidunt temporibus laudantium
-            aut eaque reiciendis provident?
+            Բոնը՝ ուրախության կայծն է։ Արևի պես ջերմ, աշխույժ ու հնարամիտ։ Նա
+            միշտ շարժման մեջ է, կազմակերպում է խաղեր, պարեր և զվարճալի
+            փորձություններ՝ վարակելով բոլորին իր ուրախությամբ
           </p>
         </div>
       </div>

@@ -85,9 +85,10 @@ const Home = () => {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  // return isLoading ? (
+    // <Loading />
+  // ) : (
+  return (
     // <div className={styles.wrapper}>
     <>
       <Header />

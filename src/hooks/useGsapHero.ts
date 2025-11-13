@@ -55,7 +55,7 @@ export const useGsapHero = () => {
           scrollTrigger: {
             trigger: "#heroRight",
             start: "top top",
-            end: `${isMobile ? "bottom+=200": "bottom"} center`,
+            end: `${isMobile ? "bottom+=200" : "bottom"} center`,
             scrub: true,
             markers: false,
           },
@@ -72,25 +72,35 @@ export const useGsapHero = () => {
   // Hero Left
   useGSAP(() => {
     setTimeout(() => {
-      // Entry: slide in from left
-      gsap.fromTo(
-        "#heroLeft",
-        { x: -700, opacity: 0, scale: 0.6 },
-        {
-          scrollTrigger: {
-            trigger: "#heroLeft",
-            start: `${isMobile ? "bottom+=50" : "top"} bottom`,
-            end: `top 40%`,
-            scrub: true,
-            markers: false,
-          },
-          x: 0,
-          opacity: 1,
-          scale: 1,
-        }
-      );
+      isMobile
+        ? gsap.from("#heroLeft", {
+            x: -700,
+            opacity: 0,
+            scale: 0.8,
+            duration: 1.5,
+            ease: "power2.out",
+          })
+        : null;
 
-      // Scroll effect: slide back left while scaling down
+      !isMobile
+        ? gsap.fromTo(
+            "#heroLeft",
+            { x: -700, opacity: 0, scale: 0.6 },
+            {
+              scrollTrigger: {
+                trigger: "#heroLeft",
+                start: "top bottom",
+                end: "top 40%",
+                scrub: true,
+                markers: false,
+              },
+              x: 0,
+              opacity: 1,
+              scale: 1,
+            }
+          )
+        : null;
+
       gsap.fromTo(
         "#heroLeft",
         { x: 0, scale: 1 },
