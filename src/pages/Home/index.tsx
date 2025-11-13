@@ -1,4 +1,3 @@
-import styles from "./Home.module.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MainHero from "@/components/MainHero";
@@ -13,15 +12,29 @@ import cloud3 from "@/assets/images/cloud3.png";
 import cloud4 from "@/assets/images/cloud4.png";
 import img1 from "@/assets/images/1.jpg";
 import img3 from "@/assets/images/3.png";
+import rainbow from "@/assets/images/rainbow.png";
 import sky from "@/assets/images/sky.png";
+import Services from "@/components/Services";
+import axios from "axios";
+import type { ServicesData } from "@/types";
 
 const Home = () => {
+  const [data, setData] = useState<ServicesData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const preloadAssets = async () => {
       try {
-        const imageUrls = [cloud1, cloud2, cloud3, cloud4, img1, img3, sky];
+        const imageUrls = [
+          cloud1,
+          cloud2,
+          cloud3,
+          cloud4,
+          img1,
+          img3,
+          rainbow,
+          sky,
+        ];
 
         const imagePromises = imageUrls.map(
           (src) =>
@@ -32,10 +45,19 @@ const Home = () => {
               img.onerror = () => reject();
             })
         );
+        axios
+          .get<ServicesData[]>(
+            "https://6911fde452a60f10c8202df3.mockapi.io/services"
+          )
+          .then((res) => {
+            const filtered = res.data.filter((obj) => obj.is);
+            setData(filtered);
+          })
+          .catch((err) => console.error("services error:", err));
 
         const delay = new Promise<void>((resolve) => setTimeout(resolve, 2000));
 
-        await Promise.all([...imagePromises, delay]);
+        await Promise.all([...imagePromises, delay, data]);
 
         setIsLoading(false);
       } catch (err) {
@@ -66,13 +88,16 @@ const Home = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className={styles.wrapper}>
+    // <div className={styles.wrapper}>
+    <>
       <Header />
       <MainHero />
       <About />
+      <Services data={data} setData={setData} />
       <ContactUs />
       <Footer />
-    </div>
+    </>
+    // </div>
   );
 };
 

@@ -1,18 +1,20 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const useGsapHero = () => {
-  // Cloud mouse parallax
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   useGSAP(() => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
 
     const factors = clouds.map(() => ({
       x: gsap.utils.random(-40, 40),
       y: gsap.utils.random(-35, 35),
-      speed: gsap.utils.random(0.6, 1),
+      speed: gsap.utils.random(0.5, 1),
     }));
 
     const handleMove = (e: MouseEvent) => {
@@ -53,7 +55,7 @@ export const useGsapHero = () => {
           scrollTrigger: {
             trigger: "#heroRight",
             start: "top top",
-            end: "bottom center",
+            end: `${isMobile ? "bottom+=200": "bottom"} center`,
             scrub: true,
             markers: false,
           },
@@ -77,8 +79,8 @@ export const useGsapHero = () => {
         {
           scrollTrigger: {
             trigger: "#heroLeft",
-            start: "top bottom",
-            end: "top 40%",
+            start: `${isMobile ? "bottom+=50" : "top"} bottom`,
+            end: `top 40%`,
             scrub: true,
             markers: false,
           },
@@ -98,7 +100,7 @@ export const useGsapHero = () => {
             start: "top top",
             end: "bottom top",
             scrub: true,
-            markers: true,
+            markers: false,
           },
           x: -700,
           scale: 0.6,

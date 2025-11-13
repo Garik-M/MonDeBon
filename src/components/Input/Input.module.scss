@@ -18,7 +18,7 @@
     translate: -50% -50%;
     cursor: pointer;
     text-wrap: nowrap;
-    font-size: 20px;
+    font-size: 18px;
 
 
     &.filled {
@@ -27,6 +27,7 @@
       translate: 0;
       color: #00000075;
       background-color: $white;
+      font-size: 16px;
     }
     &:has(+ input:focus) {
       top: -10px;
@@ -34,7 +35,7 @@
       translate: 0;
       color: #00000075;
       background-color: $white;
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 

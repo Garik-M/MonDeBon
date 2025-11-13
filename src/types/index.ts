@@ -4,5 +4,17 @@ export type InputData = {
 };
 
 export type InputProps = {
-  value: InputData
-}
+  value: InputData;
+};
+
+export type ServicesData = {
+  id: number;
+  name: string;
+  ages: string;
+  duration: string;
+  price: number | null;
+  quantity: string | null;
+  is: boolean;
+  image: string;
+  disabled: boolean;
+};

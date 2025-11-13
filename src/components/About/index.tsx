@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useGsapScrollList } from "@/hooks/useGsapScrollList";
 import styles from "./About.module.scss";
+import rainbow from "@assets/images/rainbow.png";
 
 const About: React.FC = () => {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -16,7 +17,7 @@ const About: React.FC = () => {
   return (
     <section className={styles.about} id="About">
       <div className={styles.rainbow}>
-        <img src="https://gallery.yopriceville.com/downloadfullsize/send/14564" alt="rainbow"/>
+        <img src={rainbow} alt="rainbow"/>
       </div>
       <div className={styles.wrapper}>
         <div className="container">

@@ -4,7 +4,7 @@ import logo from "@assets/Video/loading.mp4";
 const Loading = () => {
   return (
     <section className={styles.loading}>
-      <video src={logo} autoPlay loop muted playsInline />
+      <video src={logo} autoPlay loop muted playsInline preload="auto" />
     </section>
   );
 };
