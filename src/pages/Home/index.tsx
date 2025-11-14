@@ -4,7 +4,7 @@ import MainHero from "@/components/MainHero";
 import About from "@/components/About";
 import ContactUs from "@/components/Contact";
 import { useEffect, useState } from "react";
-import Loading from "@/components/Loading";
+// import Loading from "@/components/Loading";
 
 import cloud1 from "@/assets/images/cloud1.png";
 import cloud2 from "@/assets/images/cloud2.png";
@@ -20,7 +20,7 @@ import type { ServicesData } from "@/types";
 
 const Home = () => {
   const [data, setData] = useState<ServicesData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const preloadAssets = async () => {
