@@ -59,10 +59,10 @@ const Home = () => {
 
         await Promise.all([...imagePromises, delay, data]);
 
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (err) {
         console.error("Error preloading assets:", err);
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
 
