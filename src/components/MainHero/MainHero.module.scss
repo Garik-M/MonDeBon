@@ -3,7 +3,7 @@
 .mainHero {
   @include flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   height: 100%;
   background-size: 100% 100%;
   overflow-x: hidden;
@@ -15,6 +15,7 @@
     height: 100vh;
     z-index: -1;
     filter: saturate(150%);
+    user-select: none;
   }
 
   .clouds {
@@ -33,6 +34,7 @@
       will-change: transform;
       backface-visibility: hidden;
       opacity: 1;
+      user-select: none;
 
       @media (max-width: 1250px) {
         width: 300px;
@@ -165,8 +167,8 @@
     }
     .welcome {
       width: 500px;
-      font-size: 32px;
-      text-align: start;
+      font-size: 30px;
+      text-align: center;
       font-weight: 400;
       word-spacing: 4px;
       letter-spacing: .3px;
@@ -177,22 +179,18 @@
       z-index: 2;
       animation: entry 1.3s ease-in-out;
 
-      &:last-child{
-        text-align: end;
-      }
-
       @media (max-width: 1100px) {
-        font-size: 26px;
+        font-size: 24px;
         line-height: 35px;
         width: 400px;
       }
       @media (max-width: 766px) {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 32px;
         letter-spacing: 0.5px;
       }
       @media (max-width: 600px) {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 25px;
         width: 250px;
       }

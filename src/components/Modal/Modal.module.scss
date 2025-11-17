@@ -1,0 +1,75 @@
+@import "@styles/App.scss";
+
+.modal {
+  position: absolute;
+  top: 50%;
+  width: 90%;
+  min-height: 400px;
+  translate: 0 -50%;
+  @include flex(space-between, $dir: column, $gap: 30px);
+  background-color: $dark;
+  color: $white;
+  border-radius: 20px;
+  padding: 20px 100px;
+  z-index: 10;
+
+  @media (max-width: 767px) {
+    padding: 20px 50px;
+  }
+
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    svg {
+      fill: $orange;
+      path {
+        stroke: $orange;
+        stroke-width: .5px;
+      }
+    }
+  }
+
+  .title {
+    @include flex;
+    font-size: 26px;
+
+    @media (max-width: 500px) {
+      font-size: 22px;
+    }
+  }
+  .details {
+    width: 100%;
+    .contain {
+      font-size: 18px;
+      line-height: 120%;
+      width: 80%;
+    }
+  }
+  .submit {
+    @include flex($gap: 20px);
+    .exit {
+      width: 100px;
+      height: 35px;
+      font-size: 18px;
+      background-color: $light;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .select {
+      width: 100px;
+      height: 35px;
+      font-size: 18px;
+      background-color: $orange;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+
+  &::backdrop {
+    background-color: #11111190;
+  }
+}

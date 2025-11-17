@@ -8,6 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 export const useGsapHero = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  const smaller = useMediaQuery({ maxWidth: 600 });
+  const small = useMediaQuery({ maxWidth: 500 });
+
   useGSAP(() => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
 
@@ -107,14 +110,14 @@ export const useGsapHero = () => {
         {
           scrollTrigger: {
             trigger: "#heroLeft",
-            start: "top top",
+            start: `${small ? "-300px 0" : smaller ? "-100px 0px" : "top top"}`,
             end: "bottom top",
             scrub: true,
             markers: false,
           },
           x: -700,
           scale: 0.6,
-          ease: "none",
+          opacity: 0,
         }
       );
 
