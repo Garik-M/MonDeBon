@@ -1,5 +1,96 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
-footer{
-  margin-top: 100px;
+footer {
+  @include flex($dir: column);
+  position: relative;
+  height: 400px;
+  z-index: 10;
+  background-color: $orange;
+  box-shadow: 0 0 80px #00000050;
+  padding: 32px 0 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  .container {
+    @include flex(space-between, start, $gap: 20px);
+    width: 100%;
+    min-height: fit-content;
+    height: 100%;
+    .wrapper {
+      @include flex(start, start, $dir: column, $gap: 15px);
+      color: $dark;
+      user-select: none;
+      .logo {
+        width: 200px;
+        border-radius: 20px;
+      }
+      .headline {
+        position: relative;
+        font-size: 26px;
+        padding-bottom: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -3px;
+          width: 100%;
+          left: 0;
+          border-radius: 10px;
+          height: 3px;
+          background: linear-gradient(to right, $white, $light 40%, $orange);
+        }
+      }
+      .section {
+        position: relative;
+        width: 100%;
+        font-size: 20px;
+        color: $dark;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.2s;
+        padding: 0 0 5px;
+        .info {
+          @include flex(start, $gap: 10px);
+          .circle{
+            @include flex;
+            background-color: $light;
+            width: 35px;
+            height: 35px;
+            border-radius: 20px;
+          }
+          img {
+            width: 30px;
+          }
+        }
+        &:hover::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          width: 100%;
+          left: 0;
+          border-radius: 10px;
+          height: 2px;
+          background: linear-gradient(to right, $white, $light 50%, $orange);
+          animation: underline 0.5s ease;
+        }
+      }
+    }
+  }
+  .rights {
+    @include flex;
+    height: 40px;
+    background-color: $dark;
+    width: 100%;
+    color: $white;
+  }
+}
+
+@keyframes underline {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }

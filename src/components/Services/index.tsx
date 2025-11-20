@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "@components/Services/Services.module.scss";
 import type { ServicesData } from "@/types";
 import Dragger from "../Dragger";
@@ -15,22 +15,41 @@ const Services = ({ data }: Props) => {
   const [part, setPart] = useState<number>(0);
   const [selectsPart, setSelectsPart] = useState<number>(0);
   const [modal, setModal] = useState<ServicesData>();
+  const [visible, setVisible] = useState<boolean>(false);
 
   const isMobile = useMediaQuery({ maxWidth: 650 });
+  const ref = useRef<HTMLDivElement>(null);
 
-  // const selecteds = selected.map((s, i) => (
-  //   <div
-  //     key={s.id}
-  //     className={styles.service}
-  //     draggable
-  //     onDragStart={(e) => handleDragStart(e, s.id)}
-  //     data-tooltip-content={s.name}
-  //     data-tooltip-id={`tooltip-${i}`}
-  //   >
-  //     {s.name.length > 10 ? <Tooltip id={`tooltip-${i}`} /> : null}
-  //     <div>{s.name.length > 10 ? s.name.slice(0, 10) + "..." : s.name}</div>
-  //   </div>
-  // ));
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+          console.log("ENTRY:", entries[0].isIntersecting);
+        }
+      },
+      {
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 0.1,
+      }
+    );
+    
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    const t = setTimeout(() => setVisible(false), 3000);
+    console.log("ENTERED:", visible);
+    return () => clearTimeout(t);
+  }, [visible]);
 
   const totalPrice = selected.reduce((aggr, obj) => {
     return aggr + (obj.price ?? 0);
@@ -114,6 +133,13 @@ const Services = ({ data }: Props) => {
   return (
     <section className={`${styles.services} container`} id="Services">
       <div className={styles.main}>
+        <div
+          ref={ref}
+          className={`${styles.info} ${visible ? styles.show : styles.hide}`}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sint
+          deleniti placeat tempora maxime libero.
+        </div>
         <Modal
           modal={modal}
           setModal={setModal}

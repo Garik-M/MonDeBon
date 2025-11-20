@@ -1,10 +1,12 @@
+import { PropagateLoader } from "react-spinners";
 import styles from "./Loading.module.scss";
-import logo from "@assets/Video/loading.mp4";
+import logo from "@assets/images/3.png";
 
 const Loading = () => {
   return (
     <section className={styles.loading}>
-      <video src={logo} autoPlay loop muted playsInline preload="auto" />
+      <img src={logo} />
+      <PropagateLoader />
     </section>
   );
 };

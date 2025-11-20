@@ -1,19 +1,20 @@
-@import "@/styles/App.scss";
+@use "@/styles/App.scss" as *;
 
 
 .loading{
-  @include flex;
+  @include flex( $dir: column);
   position: fixed;
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: $light;
   z-index: 9999;
   overflow-y: hidden;
+  padding-bottom: 150px;
 
-  video{
-    width: 100%;
-    height: 100%;
+  img{
+    width: 250px;
+    height: 100px;
     object-fit: cover;
   }
 }

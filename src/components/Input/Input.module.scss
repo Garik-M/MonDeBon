@@ -1,25 +1,25 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
 .wrapper {
-  @include flex;
+  @include flex(start, $dir: column);
   position: relative;
   width: 300px;
-  height: 45px;
-  border: 1px solid black;
+  min-height: fit-content;
+  height: 70px;
   border-radius: 10px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 
   label {
     transition: 0.4s;
     position: absolute;
     padding: 0 3px;
-    top: 50%;
+    top: 23px;
     left: 50%;
     translate: -50% -50%;
     cursor: pointer;
     text-wrap: nowrap;
     font-size: 18px;
-
+    user-select: none;
 
     &.filled {
       top: -10px;
@@ -41,15 +41,21 @@
 
   input {
     width: 100%;
-    height: 100%;
+    height: 45px;
     padding: 0 10px;
     border: none;
     border-radius: 10px;
+    border: 1px solid black;
     font-size: 20px;
 
     &:focus {
       outline: none;
     }
     cursor: pointer;
+  }
+  .err {
+    font-size: 12px;
+    color: red;
+    text-align: center;
   }
 }

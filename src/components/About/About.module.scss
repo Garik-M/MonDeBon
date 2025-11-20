@@ -1,4 +1,4 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
 .about {
   position: relative;
@@ -43,7 +43,7 @@
     position: relative;
     width: 100%;
     height: 1000px;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(50px);
     margin-top: 130px;
     border-top-left-radius: 100%;
     border-top-right-radius: 100%;
@@ -106,7 +106,7 @@
           line-height: 28px;
           border-radius: 40px;
           background: rgba(255, 255, 255, 0.3);
-          backdrop-filter: blur(15px);
+          color: $dark;
           box-shadow:
             6px 6px 30px rgb(150, 182, 215),
             -6px -6px 30px rgb(237, 250, 255),

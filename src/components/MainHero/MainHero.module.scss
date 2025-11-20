@@ -1,4 +1,4 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
 .mainHero {
   @include flex;
@@ -111,7 +111,7 @@
     margin-top: 100px;
     max-width: 100%;
     @media (max-width: 766px) {
-      gap: 0px;
+      gap: 10px;
     }
 
     .hero1 {
@@ -166,42 +166,83 @@
       }
     }
     .welcome {
-      width: 500px;
-      font-size: 30px;
+      width: 550px;
+      font-size: 24px;
       text-align: center;
       font-weight: 400;
       word-spacing: 4px;
-      letter-spacing: .3px;
-      line-height: 45px;
+      letter-spacing: 0.3px;
+      line-height: 40px;
       color: $dark;
       user-select: none;
       margin: 0 0 100px 0;
       z-index: 2;
-      animation: entry 1.3s ease-in-out;
+      animation: entryDesk 1.3s ease-in-out;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(100px);
+      padding: 30px;
+      box-shadow:
+        6px 6px 30px rgb(150, 182, 215),
+        -6px -6px 30px rgb(237, 250, 255),
+        inset 6px 6px 30px rgba(150, 182, 215, 0.4),
+        inset -6px -6px 30px rgba(237, 250, 255, 0.4);
 
       @media (max-width: 1100px) {
-        font-size: 24px;
-        line-height: 35px;
-        width: 400px;
-      }
-      @media (max-width: 766px) {
         font-size: 20px;
         line-height: 32px;
+        width: 450px;
+        padding: 20px;
+      }
+      @media (max-width: 766px) {
+        font-size: 18px;
+        line-height: 28px;
         letter-spacing: 0.5px;
+        border-radius: 30px;
+        animation: entryIpad 1.3s ease-in-out;
       }
       @media (max-width: 600px) {
-        font-size: 16px;
-        line-height: 25px;
+        font-size: 14px;
+        line-height: 22px;
         width: 250px;
+        border-radius: 20px;
+        animation: entryMobile 1.3s ease-in-out;
+        padding: 10px 5px;
       }
     }
   }
 }
 
-@keyframes entry {
+@keyframes entryDesk {
   from {
     transform: translateY(70px);
     line-height: 50px;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    line-height: calc(normal + 20px);
+    opacity: 1;
+  }
+}
+
+@keyframes entryIpad {
+  from {
+    transform: translateY(70px);
+    line-height: 35px;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    line-height: calc(normal + 20px);
+    opacity: 1;
+  }
+}
+
+@keyframes entryMobile {
+  from {
+    transform: translateY(70px);
+    line-height: 26px;
     opacity: 0;
   }
   to {

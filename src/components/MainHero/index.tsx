@@ -16,7 +16,6 @@ const MainHero = () => {
       key={i}
       src={val}
       className={`${styles.cloud} cloud`}
-      fetchPriority="high"
       alt={`cloud${i}`}
     />
   ));

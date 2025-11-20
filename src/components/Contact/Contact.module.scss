@@ -1,88 +1,134 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
-// .contactUs {
-//   position: relative;
-.contact {
-  @include flex;
-  position: relative;
-  width: 100%;
-  height: 500px;
-  box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(5px);
-  border-radius: 20px;
-  padding: 20px 30px;
-  z-index: 10;
+.wrapper {
+  padding: 70px 0;
+  .contactUs {
+    position: relative;
+    min-height: fit-content;
+    padding: 50px 0;
+    height: calc(100vh - 70px);
 
-  form {
-    @include flex($dir: column, $gap: 20px);
-    padding: 32px;
-    border-radius: 24px;
-    width: 400px;
-    background-color: $white;
-
-    .areaWrapper {
-      @include flex;
+    .contact {
+      @include flex(space-around, $gap: 50px);
       position: relative;
-      width: 300px;
-      border: 1px solid black;
-      border-radius: 10px;
+      backdrop-filter: blur(50px);
+      padding: 30px 20px;
+      width: 100%;
+      min-height: fit-content;
+      height: 536px;
+      border-radius: 20px;
+      z-index: 10;
 
-      label {
-        transition: 0.4s;
-        position: absolute;
+      @media (max-width: 767px) {
+        flex-wrap: wrap;
+      }
+      .mask {
+        @include flex($dir: column, $gap: 50px);
+        width: 40%;
+        min-width: 250px;
+
+        .tagline {
+          width: 100%;
+          @include flex;
+          font-size: 40px;
+          color: $dark;
+
+          @media (max-width: 900px) {
+            font-size: 30px;
+          }
+        }
+
+        .maskImg {
+          width: 100%;
+          mask-image: url("@assets/images/mask.png");
+          mask-size: 95%;
+          mask-position: center center;
+          mask-repeat: no-repeat;
+          -webkit-mask-image: url("@assets/images/mask.png");
+          -webkit-mask-size: 95%;
+          -webkit-mask-position: center center;
+          -webkit-mask-repeat: no-repeat;
+        }
+      }
+      form {
+        @include flex($dir: column, $gap: 5px);
+        padding: 32px;
+        border-radius: 24px;
+        width: 400px;
         background-color: $white;
-        padding: 0 3px;
-        top: 40%;
-        left: 50%;
-        translate: -50% -50%;
-        font-size: 18px;
-        letter-spacing: .5px;
-        cursor: pointer;
 
-        &:has(+textarea:focus) {
-          top: -10px;
-          left: 10px;
-          translate: 0;
-          color: #00000075;
-          background-color: $white;
-          font-size: 16px;
+        .areaWrapper {
+          @include flex(start, $dir: column);
+          position: relative;
+          width: 300px;
+          height: 120px;
+          border-radius: 10px;
+
+          label {
+            transition: 0.4s;
+            position: absolute;
+            background-color: $white;
+            padding: 0 3px;
+            top: 40%;
+            left: 50%;
+            translate: -50% -50%;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            user-select: none;
+            cursor: pointer;
+
+            &:has(+ textarea:focus) {
+              top: -10px;
+              left: 10px;
+              translate: 0;
+              color: #00000075;
+              background-color: $white;
+              font-size: 16px;
+            }
+
+            &.filled {
+              top: -10px;
+              left: 10px;
+              translate: 0;
+              color: #00000075;
+              background-color: $white;
+              font-size: 16px;
+            }
+          }
+
+          textarea {
+            width: 100%;
+            height: 100px;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            border: 1px solid black;
+
+            &:focus {
+              outline: none;
+            }
+            cursor: pointer;
+            resize: none;
+          }
+          .err {
+            font-size: 12px;
+            color: red;
+            text-align: center;
+          }
         }
-
-        &.filled{
-          top: -10px;
-          left: 10px;
-          translate: 0;
-          color: #00000075;
-          background-color: $white;
-          font-size: 16px;
+        input[type="submit"] {
+          width: 300px;
+          height: 45px;
+          border-radius: 10px;
+          border: none;
+          background-color: $orange;
+          font-size: 22px;
+          margin-top: 20px;
+          cursor: pointer;
         }
       }
-
-      textarea {
-        width: 100%;
-        height: 100px;
-        padding: 15px 10px;
-        border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        letter-spacing: .5px;
-
-        &:focus {
-          outline: none;
-        }
-        cursor: pointer;
-        resize: none;
-      }
-    }
-    input[type=submit]{
-      width: 300px;
-      height: 45px;
-      border-radius: 10px;
-      border: none;
-      background-color: $orange;
-      font-size: 22px;
-      cursor: pointer;
     }
   }
 }
-// }

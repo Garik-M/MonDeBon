@@ -4,7 +4,7 @@ import MainHero from "@/components/MainHero";
 import About from "@/components/About";
 import ContactUs from "@/components/Contact";
 import { useEffect, useState } from "react";
-// import Loading from "@/components/Loading";
+import Loading from "@/components/Loading";
 
 import cloud1 from "@/assets/images/cloud1.png";
 import cloud2 from "@/assets/images/cloud2.png";
@@ -20,7 +20,7 @@ import type { ServicesData } from "@/types";
 
 const Home = () => {
   const [data, setData] = useState<ServicesData[]>([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const preloadAssets = async () => {
@@ -55,14 +55,13 @@ const Home = () => {
           })
           .catch((err) => console.error("services error:", err));
 
-        const delay = new Promise<void>((resolve) => setTimeout(resolve, 2000));
 
-        await Promise.all([...imagePromises, delay, data]);
+        await Promise.all([...imagePromises, data]);
 
-        // setIsLoading(false);
+        setIsLoading(false);
       } catch (err) {
         console.error("Error preloading assets:", err);
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     };
 
@@ -85,10 +84,9 @@ const Home = () => {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  // return isLoading ? (
-    // <Loading />
-  // ) : (
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     // <div className={styles.wrapper}>
     <>
       <Header />

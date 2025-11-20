@@ -3,22 +3,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Monserrat;
 }
-// @font-face {
-    // font-family: Dsex;
-    // src: url("@/assets/Fonts/Dsex.ttf") format("truetype");
-// }
 
-// .EntezarFont {
-  // font-family: Dsex, B Nazanin, Tahoma !important;
-// }
+@font-face {
+  font-family: Monserrat;
+  src: url("@/assets/Fonts/DejaVuSans.ttf") format("truetype");
+}
 
 .container {
   justify-items: center;
   max-width: 1250px;
   margin: 0 auto;
   width: 100%;
-  
+
   @media (max-width: 1314px) {
     padding: 0 32px;
   }

@@ -2,48 +2,38 @@ import styles from "./Contact.module.scss";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Input from "@components/Input";
-import type { InputData } from "@/types";
+import { inputArr, schema } from "@/utils";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import faces from "@assets/images/faces.png";
 
 const ContactUs = () => {
   const form = useRef<HTMLFormElement>(null);
   const [isFilled, setIsFilled] = useState<boolean>(false);
-  const inputArr: InputData[] = [
-    {
-      value: "Անուն",
-      id: "name",
-    },
-    {
-      value: "Էլ. Հասցե",
-      id: "email",
-    },
-    {
-      value: "Հասցե",
-      id: "address",
-    },
-    {
-      value: "Հեռախոսահամար",
-      id: "tel",
-    },
-  ];
-  const sendEmail = (e: any) => {
-    e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current as HTMLFormElement,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const sendEmail = async (data: any) => {
+    try {
+      const result = await emailjs.send(
+        "service_a3dt3zd",
+        "template_vgn1ly7",
+        data,
+        "pXA3uyqkeujWdbTlJ"
       );
+
+      console.log("SUCCESS:", result.text);
+    } catch (error: any) {
+      console.log("ERROR:", error.text);
+    }
   };
+
   const filled = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!isFilled) {
       setIsFilled(true);
@@ -53,24 +43,41 @@ const ContactUs = () => {
   };
 
   return (
-    <div className={styles.contactUs}>
-      <div className="container">
-        <div className={styles.contact} id="Contact">
-          <form ref={form} onSubmit={sendEmail}>
-            {inputArr.map((val, i) => (
-              <Input value={val} key={i}/>
-            ))}
-            <div className={styles.areaWrapper}>
-              <label
-                htmlFor="textarea"
-                className={isFilled ? styles.filled : ""}
-              >
-                Հաղորդագրություն
-              </label>
-              <textarea name="message" id="textarea" onChange={filled} />
+    <div className={styles.wrapper} id="Contact">
+      <div className={styles.contactUs}>
+        <div className="container">
+          <div className={styles.contact}>
+            <div className={styles.mask}>
+              <div className={styles.tagline}>Կապ մեզ հետ</div>
+              <img className={styles.maskImg} src={faces} />
             </div>
-            <input type="submit" value="Ուղարկել" />
-          </form>
+            <form ref={form} onSubmit={handleSubmit(sendEmail)}>
+              {inputArr.map((val, i) => (
+                <Input
+                  value={val}
+                  key={i}
+                  register={register}
+                  errors={errors}
+                />
+              ))}
+              <div className={styles.areaWrapper}>
+                <label
+                  htmlFor="textarea"
+                  className={isFilled ? styles.filled : ""}
+                >
+                  Հաղորդագրություն
+                </label>
+                <textarea
+                  id="textarea"
+                  {...register("message", {
+                    onChange: filled,
+                  })}
+                />
+                <p className={styles.err}>{errors.message?.message}</p>
+              </div>
+              <input type="submit" value="Ուղարկել" />
+            </form>
+          </div>
         </div>
       </div>
     </div>

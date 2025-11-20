@@ -1,4 +1,4 @@
-@import "@styles/App.scss";
+@use "@styles/App.scss" as *;
 
 header {
   @include flex();
@@ -107,14 +107,6 @@ header {
   }
 }
 
-@keyframes entry {
-  from {
-    transform: translateX(1000px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
 
 @keyframes underline {
   from {
