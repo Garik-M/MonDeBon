@@ -55,10 +55,10 @@ const Modal = ({ modal, setModal, setSelected, selected }: Props) => {
         ) : null}
       </div>
       <div className={styles.submit}>
-        <button className={styles.exit} onClick={handleExit}>
+        <button name="ok" className={styles.exit} onClick={handleExit}>
           OK
         </button>
-        <button className={styles.select} onClick={() => handleSelect(modal)}>
+        <button name="select" className={styles.select} onClick={() => handleSelect(modal)}>
           {!isSelected ? "Select" : "Drop Back"}
         </button>
       </div>

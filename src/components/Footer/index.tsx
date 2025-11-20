@@ -15,38 +15,42 @@ const Footer = () => {
         </div>
         <div className={styles.wrapper}>
           <div className={styles.headline}>Բաժիններ</div>
-          <Link
-            to={"Top"}
-            smooth={true}
-            duration={1000}
+          <a
+            href="#Top"
             className={styles.section}
+            onClick={(e) => e.preventDefault()}
           >
-            Գլխավոր Էջ
-          </Link>
-          <Link
-            to={"About"}
-            smooth={true}
-            duration={1000}
+            <Link to="Top" smooth={true} duration={1000}>
+              Գլխավոր Էջ
+            </Link>
+          </a>
+          <a
+            href="#About"
             className={styles.section}
+            onClick={(e) => e.preventDefault()}
           >
-            Մեր Մասին
-          </Link>
-          <Link
-            to={"Services"}
-            smooth={true}
-            duration={1000}
+            <Link to="About" smooth={true} duration={1000}>
+              Մեր Մասին
+            </Link>
+          </a>
+          <a
+            href="#Services"
             className={styles.section}
+            onClick={(e) => e.preventDefault()}
           >
-            Մեր Ծառայությունները
-          </Link>
-          <Link
-            to={"Contact"}
-            smooth={true}
-            duration={1000}
+            <Link to="Services" smooth={true} duration={1000}>
+              Մեր Ծառայությունները
+            </Link>
+          </a>
+          <a
+            href="#Contact"
             className={styles.section}
+            onClick={(e) => e.preventDefault()}
           >
-            Կապ Մեզ Հետ
-          </Link>
+            <Link to="Contact" smooth={true} duration={1000}>
+              Կապ Մեզ Հետ
+            </Link>
+          </a>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.headline}>Կապ Մեզ Հետ</div>

@@ -36,22 +36,30 @@ const Header = () => {
       <div className={`${styles.container} container`}>
         <div className={styles.logo}>
           <Link to="Top" smooth={true} duration={500}>
-            <img src={img} alt="logo"/>
+            <img src={img} alt="logo" />
           </Link>
         </div>
         <nav>
-          <Link to="Top" smooth={true} duration={1000}>
-            Գլխավոր Էջ
-          </Link>
-          <Link to="About" smooth={true} duration={1000}>
-            Մեր Մասին
-          </Link>
-          <Link to="Services" smooth={true} duration={1000}>
-            Մեր Ծառայությունները
-          </Link>
-          <Link to="Contact" smooth={true} duration={1000}>
-            Կապ Մեզ Հետ
-          </Link>
+          <a href="#Top" onClick={(e) => e.preventDefault()}>
+            <Link to="Top" smooth={true} duration={1000}>
+              Գլխավոր Էջ
+            </Link>
+          </a>
+          <a href="#About" onClick={(e) => e.preventDefault()}>
+            <Link to="About" smooth={true} duration={1000}>
+              Մեր Մասին
+            </Link>
+          </a>
+          <a href="#Services" onClick={(e) => e.preventDefault()}>
+            <Link to="Services" smooth={true} duration={1000}>
+              Մեր Ծառայությունները
+            </Link>
+          </a>
+          <a href="#Contact" onClick={(e) => e.preventDefault()}>
+            <Link to="Contact" smooth={true} duration={1000}>
+              Կապ Մեզ Հետ
+            </Link>
+          </a>
         </nav>
         <div className={styles.list} ref={menuRef}>
           <Hamburger
@@ -65,13 +73,28 @@ const Header = () => {
                 <Link to="Top" smooth={true} duration={1000} onClick={openBar}>
                   Գլխավոր Էջ
                 </Link>
-                <Link to="About" smooth={true} duration={1000} onClick={openBar}>
+                <Link
+                  to="About"
+                  smooth={true}
+                  duration={1000}
+                  onClick={openBar}
+                >
                   Մեր Մասին
                 </Link>
-                <Link to="Services" smooth={true} duration={1000} onClick={openBar}>
+                <Link
+                  to="Services"
+                  smooth={true}
+                  duration={1000}
+                  onClick={openBar}
+                >
                   Մեր Ծառայությունները
                 </Link>
-                <Link to="Contact" smooth={true} duration={1000} onClick={openBar}>
+                <Link
+                  to="Contact"
+                  smooth={true}
+                  duration={1000}
+                  onClick={openBar}
+                >
                   Կապ Մեզ Հետ
                 </Link>
               </div>

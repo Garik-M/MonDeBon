@@ -49,7 +49,7 @@ const ContactUs = () => {
           <div className={styles.contact}>
             <div className={styles.mask}>
               <div className={styles.tagline}>Կապ մեզ հետ</div>
-              <img className={styles.maskImg} src={faces} />
+              <img className={styles.maskImg} src={faces} alt="contact img"/>
             </div>
             <form ref={form} onSubmit={handleSubmit(sendEmail)}>
               {inputArr.map((val, i) => (

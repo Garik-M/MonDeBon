@@ -25,7 +25,7 @@ const MainHero = () => {
 
       <div className={styles.clouds}>{cloudimages}</div>
 
-      <div className="container">
+      <main className="container">
         <div className={styles.main}>
           <p className={styles.welcome}>
             Մոնը բարի է, նուրբ ու երազկոտ։ Նա սիրում է գտնել նոր գաղափարներ
@@ -66,7 +66,7 @@ const MainHero = () => {
             բոլորին իր ուրախությամբ։
           </p>
         </div>
-      </div>
+      </main>
     </section>
   );
 };
