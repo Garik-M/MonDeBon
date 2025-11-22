@@ -40,26 +40,18 @@ const Header = () => {
           </Link>
         </div>
         <nav>
-          <a href="#Top" onClick={(e) => e.preventDefault()}>
-            <Link to="Top" smooth={true} duration={1000}>
-              Գլխավոր Էջ
-            </Link>
-          </a>
-          <a href="#About" onClick={(e) => e.preventDefault()}>
-            <Link to="About" smooth={true} duration={1000}>
-              Մեր Մասին
-            </Link>
-          </a>
-          <a href="#Services" onClick={(e) => e.preventDefault()}>
-            <Link to="Services" smooth={true} duration={1000}>
-              Մեր Ծառայությունները
-            </Link>
-          </a>
-          <a href="#Contact" onClick={(e) => e.preventDefault()}>
-            <Link to="Contact" smooth={true} duration={1000}>
-              Կապ Մեզ Հետ
-            </Link>
-          </a>
+          <Link to="Top" smooth={true} duration={1000}>
+            Գլխավոր Էջ
+          </Link>
+          <Link to="About" smooth={true} duration={1000}>
+            Մեր Մասին
+          </Link>
+          <Link to="Services" smooth={true} duration={1000}>
+            Մեր Ծառայությունները
+          </Link>
+          <Link to="Contact" smooth={true} duration={1000}>
+            Կապ Մեզ Հետ
+          </Link>
         </nav>
         <div className={styles.list} ref={menuRef}>
           <Hamburger

@@ -5,7 +5,7 @@ import logo from "@assets/images/3.png";
 const Loading = () => {
   return (
     <section className={styles.loading}>
-      <img src={logo} />
+      <img src={logo} alt="logo"/>
       <PropagateLoader />
     </section>
   );

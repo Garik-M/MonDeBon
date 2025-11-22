@@ -11,46 +11,42 @@ const Footer = () => {
     <footer>
       <div className={`${styles.container} container`}>
         <div className={styles.wrapper}>
-          <img src={logo} className={styles.logo} />
+          <img src={logo} className={styles.logo} alt="logo"/>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.headline}>Բաժիններ</div>
-          <a
-            href="#Top"
+          <Link
+            to="Top"
+            smooth={true}
+            duration={1000}
             className={styles.section}
-            onClick={(e) => e.preventDefault()}
           >
-            <Link to="Top" smooth={true} duration={1000}>
-              Գլխավոր Էջ
-            </Link>
-          </a>
-          <a
-            href="#About"
+            Գլխավոր Էջ
+          </Link>
+          <Link
+            to="About"
+            smooth={true}
+            duration={1000}
             className={styles.section}
-            onClick={(e) => e.preventDefault()}
           >
-            <Link to="About" smooth={true} duration={1000}>
-              Մեր Մասին
-            </Link>
-          </a>
-          <a
-            href="#Services"
+            Մեր Մասին
+          </Link>
+          <Link
+            to="Services"
+            smooth={true}
+            duration={1000}
             className={styles.section}
-            onClick={(e) => e.preventDefault()}
           >
-            <Link to="Services" smooth={true} duration={1000}>
-              Մեր Ծառայությունները
-            </Link>
-          </a>
-          <a
-            href="#Contact"
+            Մեր Ծառայությունները
+          </Link>
+          <Link
+            to="Contact"
+            smooth={true}
+            duration={1000}
             className={styles.section}
-            onClick={(e) => e.preventDefault()}
           >
-            <Link to="Contact" smooth={true} duration={1000}>
-              Կապ Մեզ Հետ
-            </Link>
-          </a>
+            Կապ Մեզ Հետ
+          </Link>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.headline}>Կապ Մեզ Հետ</div>
