@@ -4,6 +4,8 @@ import cloud2 from "@assets/images/cloud2.png";
 import cloud3 from "@assets/images/cloud3.png";
 import cloud4 from "@assets/images/cloud4.png";
 import sky from "@/assets/images/sky.png";
+import Mon from "@assets/images/mon.png";
+import Bon from "@assets/images/Bon.png";
 import { useGsapHero } from "@hooks/useGsapHero";
 
 const MainHero = () => {
@@ -36,7 +38,7 @@ const MainHero = () => {
           <div className={styles.hero1} id="heroRight">
             <img
               className={styles.hero}
-              src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              src={Mon}
               alt="Hero 1"
             />
             <img
@@ -51,7 +53,7 @@ const MainHero = () => {
           <div className={styles.hero1} id="heroLeft">
             <img
               className={styles.hero}
-              src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              src={Bon}
               alt="Hero 2"
             />
             <img

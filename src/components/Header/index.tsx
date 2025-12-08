@@ -35,7 +35,7 @@ const Header = () => {
     <header>
       <div className={`${styles.container} container`}>
         <div className={styles.logo}>
-          <Link to="Top" smooth={true} duration={500}>
+          <Link to="Top" smooth={true} duration={1000}>
             <img src={img} alt="logo" />
           </Link>
         </div>

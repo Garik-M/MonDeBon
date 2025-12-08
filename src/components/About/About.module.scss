@@ -88,6 +88,9 @@
         margin-top: 20px;
         letter-spacing: 1px;
       }
+      @media (max-width: 650px) {
+        margin-top: 20px;
+      }
 
       .textBlocks {
         @include flex($dir: column, $gap: 50px);
@@ -113,7 +116,7 @@
             inset 6px 6px 30px rgba(150, 182, 215, 0.4),
             inset -6px -6px 30px rgba(237, 250, 255, 0.4);
 
-          &:nth-child(2){
+          &:nth-child(2) {
             width: 95%;
           }
           @media (max-width: 767px) {

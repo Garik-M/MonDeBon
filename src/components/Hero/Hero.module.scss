@@ -1,0 +1,136 @@
+@use "@styles/App.scss" as *;
+
+.hero {
+  @include flex(space-around, $gap: 10px);
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: fit-content;
+  z-index: 20;
+  backdrop-filter: blur(500px);
+  padding: 20px;
+  margin-top: -30px;
+  padding-top: 100px;
+  border-radius: 35px;
+  overflow: hidden;
+  @media (max-width: 666px) {
+    flex-direction: column;
+    padding-top: 150px;
+  }
+  .tagline {
+    @include flex(start, start, $dir: column, $gap: 80px);
+    font-size: 40px;
+    max-width: 450px;
+    width: 100%;
+    color: $black;
+    margin-left: 20px;
+    p {
+      text-wrap: wrap;
+      @media (max-width: 600px) {
+        font-size: 22px;
+      }
+    }
+    @media (max-width: 950px) {
+      font-size: 30px;
+      max-width: 350px;
+    }
+    @media (max-width: 666px) {
+      margin: 0;
+      max-width: none;
+      width: 90%;
+      align-items: center;
+    }
+    .explore {
+      width: 250px;
+      height: 50px;
+      border: none;
+      font-size: 20px;
+      background-color: $orange;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.4s ease;
+      text-wrap: wrap;
+      padding: 10px;
+
+      &:hover {
+        background: color-mix(in srgb, white 40%, $orange);
+      }
+    }
+  }
+  .streams {
+    width: 160px;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    @media (max-width: 900px) {
+      right: 0;
+    }
+    @media (max-width: 666px) {
+      top: 550px;
+      left: 0px;
+      right: unset;
+    }
+    @media (max-width: 500px) {
+      width: 140px;
+      top: 570px;
+    }
+  }
+  .lights {
+    width: 200px;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    @media (max-width: 666px) {
+      width: 160px;
+      top: 180px;
+      right: 0;
+      left: unset;
+    }
+    @media (max-width: 500px) {
+      width: 130px;
+      top: 180px;
+    }
+    @media (max-width: 420px) {
+      width: 130px;
+      top: 205px;
+    }
+  }
+  .img {
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    min-width: 200px;
+    height: 500px;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 160%;
+      min-width: 400px;
+      height: auto;
+      object-fit: contain;
+      object-position: bottom;
+      @media (max-width: 600px) {
+        min-width: 350px;
+      }
+    }
+    @media (max-width: 600px) {
+      min-width: 170px;
+    }
+  }
+}
+header {
+  top: 80px;
+  width: calc(100% - 104px);
+  max-width: calc(1250px - 40px);
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @media (max-width: 1150px) {
+    padding: 0px;
+  }
+  @media (max-width: 568px) {
+    width: calc(100% - 72px);
+  }
+}

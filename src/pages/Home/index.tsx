@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MainHero from "@/components/MainHero";
 import About from "@/components/About";
@@ -17,6 +16,7 @@ import sky from "@/assets/images/sky.png";
 import Services from "@/components/Services";
 import axios from "axios";
 import type { ServicesData } from "@/types";
+import Hero from "@/components/Hero";
 
 const Home = () => {
   const [data, setData] = useState<ServicesData[]>([]);
@@ -89,7 +89,7 @@ const Home = () => {
   ) : (
     // <div className={styles.wrapper}>
     <>
-      <Header />
+      <Hero />
       <MainHero />
       <About />
       <Services data={data} setData={setData} />

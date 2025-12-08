@@ -4,6 +4,7 @@ footer {
   @include flex($dir: column);
   position: relative;
   height: 400px;
+  min-height: fit-content;
   z-index: 10;
   background-color: $orange;
   box-shadow: 0 0 80px #00000050;
@@ -12,10 +13,11 @@ footer {
   border-top-right-radius: 30px;
 
   .container {
-    @include flex(space-between, start, $gap: 20px);
+    @include flex(space-between, start, $gap: 30px, $wrap: wrap);
     width: 100%;
     min-height: fit-content;
     height: 100%;
+    padding: 0 30px 30px;
     .wrapper {
       @include flex(start, start, $dir: column, $gap: 15px);
       color: $dark;
@@ -79,10 +81,11 @@ footer {
   }
   .rights {
     @include flex;
-    height: 40px;
+    height: 50px;
     background-color: $dark;
     width: 100%;
     color: $white;
+    padding: 0 30px;
   }
 }
 

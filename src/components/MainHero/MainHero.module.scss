@@ -111,7 +111,14 @@
     margin-top: 100px;
     max-width: 100%;
     @media (max-width: 766px) {
-      gap: 10px;
+      gap: 30px;
+    }
+    @media (max-width: 650px) {
+      flex-direction: column;
+      &:first-child {
+        flex-direction: column-reverse;
+      }
+      margin-top: 50px;
     }
 
     .hero1 {
@@ -143,11 +150,14 @@
         will-change: transform;
         transform-style: preserve-3d;
         backface-visibility: hidden;
+        @media (max-width: 1100px) {
+          width: 110%;
+        }
       }
       .heroCloud {
         position: absolute;
         bottom: 0;
-        left: 50%;
+        left: 60%;
         translate: -50%;
         width: 500px;
         height: 210px;
@@ -201,10 +211,13 @@
         border-radius: 30px;
         animation: entryIpad 1.3s ease-in-out;
       }
+      @media (max-width: 650px) {
+        margin-bottom: 50px;
+      }
       @media (max-width: 600px) {
-        font-size: 14px;
-        line-height: 22px;
-        width: 250px;
+        font-size: 16px;
+        line-height: 26px;
+        width: 80%;
         border-radius: 20px;
         animation: entryMobile 1.3s ease-in-out;
         padding: 10px 5px;
