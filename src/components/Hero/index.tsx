@@ -4,7 +4,7 @@ import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
 import Streamers from "@assets/images/PNG/Streamers.png";
 import Lights from "@assets/images/PNG/FairyLights.png";
-import heros from "@assets/images/Heros.png";
+import Heros from "@assets/images/heros.png";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 666 });
@@ -23,15 +23,15 @@ const Hero = () => {
           ? "calc(100% - 20px)"
           : "calc(1250px - 40px)";
       } else {
-        if(isMobile){
+        if (isMobile) {
           header.style.top = "70px";
-        } else{
+        } else {
           header.style.top = "90px";
         }
         header.style.maxWidth = isMobile ? "100%" : "calc(1250px - 40px)";
       }
     };
-    if(isMobile){
+    if (isMobile) {
       hero.style.marginTop = "-20px";
     }
 
@@ -61,20 +61,13 @@ const Hero = () => {
       <div className="container">
         <div className={styles.hero}>
           <div className={styles.tagline}>
-            <p>
-              Բարի գալուստ Մոնդեբոն
-            </p>
+            <p>Բարի գալուստ Մոնդեբոն</p>
             <button className={styles.explore} onClick={scrollToServices}>
               Explore Our Services
             </button>
           </div>
           <div className={styles.img}>
-            <img
-              src={heros}
-              alt="hero img"
-              width="480"
-              height="480"
-            />
+            <img src={Heros} alt="hero img" width="480" height="480" />
           </div>
           <>
             <img
