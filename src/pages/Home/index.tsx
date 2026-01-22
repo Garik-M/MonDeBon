@@ -1,9 +1,10 @@
 import Footer from "@/components/Footer";
 import MainHero from "@/components/MainHero";
 import About from "@/components/About";
+import Gallery from "@/components/Gallery";
 import ContactUs from "@/components/Contact";
-import { useEffect, useState } from "react";
 import Loading from "@/components/Loading";
+import { useEffect, useState } from "react";
 
 import cloud1 from "@/assets/images/cloud1.png";
 import cloud2 from "@/assets/images/cloud2.png";
@@ -13,10 +14,18 @@ import img1 from "@/assets/images/1.jpg";
 import img3 from "@/assets/images/3.png";
 import rainbow from "@/assets/images/rainbow.png";
 import sky from "@/assets/images/sky.png";
+// Gallery images for preloading
+import galleryImg1 from "@/assets/images/IMG_0022.jpg";
+import galleryImg2 from "@/assets/images/IMG_0049.jpg";
+import galleryImg3 from "@/assets/images/IMG_9714.jpg";
+import galleryImg4 from "@/assets/images/IMG_9759.jpg";
+import galleryImg5 from "@/assets/images/IMG_9788.jpg";
+import galleryImg6 from "@/assets/images/IMG_9865.jpg";
+import galleryImg7 from "@/assets/images/IMG_9957.jpg";
 import Services from "@/components/Services";
 import axios from "axios";
-import type { ServicesData } from "@/types";
 import Hero from "@/components/Hero";
+import type { ServicesData } from "@/types";
 
 const Home = () => {
   const [data, setData] = useState<ServicesData[]>([]);
@@ -34,6 +43,13 @@ const Home = () => {
           img3,
           rainbow,
           sky,
+          galleryImg1,
+          galleryImg2,
+          galleryImg3,
+          galleryImg4,
+          galleryImg5,
+          galleryImg6,
+          galleryImg7,
         ];
 
         const imagePromises = imageUrls.map(
@@ -43,18 +59,17 @@ const Home = () => {
               img.src = src;
               img.onload = () => resolve();
               img.onerror = () => reject();
-            })
+            }),
         );
         axios
           .get<ServicesData[]>(
-            "https://6911fde452a60f10c8202df3.mockapi.io/services"
+            "https://6911fde452a60f10c8202df3.mockapi.io/services",
           )
           .then((res) => {
             const filtered = res.data.filter((obj) => obj.is);
             setData(filtered);
           })
           .catch((err) => console.error("services error:", err));
-
 
         await Promise.all([...imagePromises, data]);
 
@@ -92,6 +107,7 @@ const Home = () => {
       <Hero />
       <MainHero />
       <About />
+      <Gallery />
       <Services data={data} setData={setData} />
       <ContactUs />
       <Footer />

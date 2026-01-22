@@ -21,17 +21,13 @@ const ContactUs = () => {
 
   const sendEmail = async (data: any) => {
     try {
-      const result = await emailjs.send(
+      await emailjs.send(
         "service_a3dt3zd",
         "template_vgn1ly7",
         data,
-        "pXA3uyqkeujWdbTlJ"
+        "pXA3uyqkeujWdbTlJ",
       );
-
-      console.log("SUCCESS:", result.text);
-    } catch (error: any) {
-      console.log("ERROR:", error.text);
-    }
+    } catch (error: any) {}
   };
 
   const filled = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -49,7 +45,7 @@ const ContactUs = () => {
           <div className={styles.contact}>
             <div className={styles.mask}>
               <div className={styles.tagline}>Կապ մեզ հետ</div>
-              <img className={styles.maskImg} src={faces} alt="contact img"/>
+              <img className={styles.maskImg} src={faces} alt="contact img" />
             </div>
             <form ref={form} onSubmit={handleSubmit(sendEmail)}>
               {inputArr.map((val, i) => (

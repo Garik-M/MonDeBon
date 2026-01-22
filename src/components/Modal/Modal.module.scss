@@ -3,18 +3,19 @@
 .modal {
   position: absolute;
   top: 50%;
-  width: 90%;
-  min-height: 400px;
+  width: 80%;
+  min-height: 300px;
   translate: 0 -50%;
-  @include flex(space-between, $dir: column, $gap: 30px);
-  background-color: $dark;
-  color: $white;
+  @include flex(start, $dir: column, $gap: 30px);
+  background-color: $white;
+  color: $black;
   border-radius: 20px;
   padding: 20px 100px;
   z-index: 10;
 
   @media (max-width: 767px) {
     padding: 20px 50px;
+    width: 90%;
   }
 
   .close {
@@ -40,11 +41,10 @@
     }
   }
   .details {
-    width: 100%;
+    width: 160px;
     .contain {
       font-size: 18px;
       line-height: 120%;
-      width: 80%;
     }
   }
   .submit {

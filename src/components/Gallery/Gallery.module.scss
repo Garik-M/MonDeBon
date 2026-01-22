@@ -1,0 +1,509 @@
+@use "@styles/App.scss" as *;
+
+// Breakpoints
+$breakpoint-large: 1200px;
+$breakpoint-medium: 768px;
+$breakpoint-small: 576px;
+
+.gallery {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  background: transparent;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(
+      to bottom,
+      rgba(165, 213, 252, 0.3),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .title {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    color: $dark;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+
+    @media (max-width: $breakpoint-medium) {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    // Responsive grid layouts:
+    // Desktop (>1200px): 4 columns, 4 rows - masonry layout
+    // Large (768px-1200px): 3 columns, 5 rows - adjusted masonry
+    // Medium (576px-768px): 2 columns, 6 rows - simplified layout
+    // Small (<576px): 1 column, 7 rows - vertical stack
+
+    @media (max-width: $breakpoint-large) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(5, 180px);
+      gap: 15px;
+    }
+
+    @media (max-width: $breakpoint-medium) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, 160px);
+      gap: 12px;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(7, 250px);
+      gap: 15px;
+    }
+
+    // Grid item positioning for masonry effect
+    .item1 {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+    }
+
+    .item2 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+    }
+
+    .item3 {
+      grid-column: 4 / 5;
+      grid-row: 1 / 3;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 3 / 4;
+        grid-row: 1 / 3;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+    }
+
+    .item4 {
+      grid-column: 3 / 4;
+      grid-row: 2 / 4;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 4;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+      }
+    }
+
+    .item5 {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 2 / 3;
+        grid-row: 3 / 5;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+      }
+    }
+
+    .item6 {
+      grid-column: 2 / 3;
+      grid-row: 3 / 5;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 1 / 3;
+        grid-row: 4 / 6;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 1 / 2;
+        grid-row: 4 / 6;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 6 / 7;
+      }
+    }
+
+    .item7 {
+      grid-column: 3 / 5;
+      grid-row: 4 / 5;
+
+      @media (max-width: $breakpoint-large) {
+        grid-column: 3 / 4;
+        grid-row: 3 / 5;
+      }
+
+      @media (max-width: $breakpoint-medium) {
+        grid-column: 2 / 3;
+        grid-row: 5 / 6;
+      }
+
+      @media (max-width: $breakpoint-small) {
+        grid-column: 1 / 2;
+        grid-row: 7 / 8;
+      }
+    }
+  }
+
+  .imageWrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.1),
+      0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    animation: fadeInUp 0.6s ease forwards;
+
+    // Stagger animation delays for each item
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 8px 25px rgba(0, 0, 0, 0.1);
+
+      .overlay {
+        opacity: 1;
+      }
+
+      .image {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .imageButton {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .imagePlaceholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    @include flex;
+    z-index: 1;
+  }
+
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    @include flex;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+  }
+
+  .viewText {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 16px;
+    }
+  }
+
+  // Modal styles
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    @include flex;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  .modalContent {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: scaleIn 0.3s ease;
+  }
+
+  .modalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .closeButton {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    @include flex;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: $breakpoint-small) {
+      top: -40px;
+      font-size: 24px;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    @include flex;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 30px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .prevButton {
+    left: 20px;
+
+    @media (max-width: $breakpoint-small) {
+      left: 10px;
+    }
+  }
+
+  .nextButton {
+    right: 20px;
+
+    @media (max-width: $breakpoint-small) {
+      right: 10px;
+    }
+  }
+
+  .imageCounter {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    @media (max-width: $breakpoint-small) {
+      bottom: -40px;
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

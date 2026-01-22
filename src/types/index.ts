@@ -35,4 +35,5 @@ export type ServicesData = {
   is: boolean;
   image: string;
   disabled: boolean;
+  description: string;
 };

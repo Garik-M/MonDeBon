@@ -34,24 +34,20 @@ const Modal = ({ modal, setModal, setSelected, selected }: Props) => {
       </div>
       <div className={styles.title}>{modal.name}</div>
       <div className={styles.desc}>
-        service desc Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Odit fugit eum eos sapiente laboriosam sequi dicta cum nostrum nesciunt
-        natus harum sit quidem ut dolorum magnam commodi impedit, maxime quaerat
-        dolore. Molestias laborum voluptates quas veritatis aspernatur eligendi
-        ea error.
+        {modal.description}
       </div>
       <div className={styles.details}>
         {modal.quantity ? (
-          <div className={styles.contain}>count: {modal.quantity}</div>
+          <div className={styles.contain}>քանակ: {modal.quantity}</div>
         ) : null}
         {modal.ages ? (
-          <div className={styles.contain}>ages: {modal.ages}</div>
+          <div className={styles.contain}>տարիք: {modal.ages}</div>
         ) : null}
         {modal.duration ? (
-          <div className={styles.contain}>duration: {modal.duration}</div>
+          <div className={styles.contain}>տևողություն: {modal.duration}</div>
         ) : null}
         {modal.price ? (
-          <div className={styles.contain}>price: {modal.price} դրամ</div>
+          <div className={styles.contain}>գին: {modal.price} դրամ</div>
         ) : null}
       </div>
       <div className={styles.submit}>

@@ -12,6 +12,7 @@
       @include flex(space-around, $gap: 50px);
       position: relative;
       backdrop-filter: blur(50px);
+      background-color: #b0d9ff;
       padding: 30px 20px;
       width: 100%;
       min-height: fit-content;

@@ -29,7 +29,6 @@ const Services = ({ data }: Props) => {
         if (entries[0].isIntersecting) {
           setVisible(true);
           observer.disconnect();
-          console.log("ENTRY:", entries[0].isIntersecting);
         }
       },
       {
@@ -47,7 +46,6 @@ const Services = ({ data }: Props) => {
   useEffect(() => {
     if (!visible) return;
     const t = setTimeout(() => setVisible(false), 3000);
-    console.log("ENTERED:", visible);
     return () => clearTimeout(t);
   }, [visible]);
 
@@ -137,8 +135,7 @@ const Services = ({ data }: Props) => {
           ref={ref}
           className={`${styles.info} ${visible ? styles.show : styles.hide}`}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sint
-          deleniti placeat tempora maxime libero.
+          Ընտրեք ծառայությունները և հավաքեք Ձեր միջոցառման փաթեթը
         </div>
         <Modal
           modal={modal}

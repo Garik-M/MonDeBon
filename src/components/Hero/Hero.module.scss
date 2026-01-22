@@ -1,5 +1,9 @@
 @use "@styles/App.scss" as *;
 
+body {
+  background: #eee;
+}
+
 .hero {
   @include flex(space-around, $gap: 10px);
   position: relative;
@@ -7,21 +11,22 @@
   height: 90vh;
   min-height: fit-content;
   z-index: 20;
-  backdrop-filter: blur(500px);
   padding: 20px;
-  margin-top: -30px;
-  padding-top: 100px;
+  padding-top: 120px;
   border-radius: 35px;
-  overflow: hidden;
+  overflow: visible;
+  user-select: none;
+  background-color: #a5d2ff;
+
   @media (max-width: 666px) {
     flex-direction: column;
-    padding-top: 150px;
+    padding-top: 120px;
   }
   .tagline {
     @include flex(start, start, $dir: column, $gap: 80px);
     font-size: 40px;
     max-width: 450px;
-    width: 100%;
+    width: 280px;
     color: $black;
     margin-left: 20px;
     p {
@@ -33,12 +38,14 @@
     @media (max-width: 950px) {
       font-size: 30px;
       max-width: 350px;
+      margin: 0;
     }
     @media (max-width: 666px) {
       margin: 0;
       max-width: none;
       width: 90%;
       align-items: center;
+      gap: 100px;
     }
     .explore {
       width: 250px;
@@ -60,25 +67,23 @@
   .streams {
     width: 160px;
     position: absolute;
-    top: 100px;
+    top: 110px;
     right: 20px;
+    @media (max-width: 1050px) {
+      width: 140px;
+      top: 90px;
+    }
     @media (max-width: 900px) {
       right: 0;
     }
     @media (max-width: 666px) {
-      top: 550px;
-      left: 0px;
-      right: unset;
-    }
-    @media (max-width: 500px) {
-      width: 140px;
-      top: 570px;
+      display: none;
     }
   }
   .lights {
     width: 200px;
     position: absolute;
-    top: 80px;
+    top: 90px;
     left: 40px;
     @media (max-width: 666px) {
       width: 160px;
@@ -86,28 +91,25 @@
       right: 0;
       left: unset;
     }
-    @media (max-width: 500px) {
-      width: 130px;
-      top: 180px;
-    }
-    @media (max-width: 420px) {
-      width: 130px;
-      top: 205px;
+    @media (max-width: 600px) {
+      width: 120px;
+      top: 135px;
     }
   }
   .img {
     position: relative;
     overflow: hidden;
-    width: 300px;
+    width: 350px;
     min-width: 200px;
     height: 500px;
+    margin-left: 50px;
     img {
-      position: absolute;
+      position: relative;
       top: 50%;
       left: 50%;
       translate: -50% -50%;
-      width: 160%;
-      min-width: 400px;
+      width: 100%;
+      // min-width: 400px;
       height: auto;
       object-fit: contain;
       object-position: bottom;
@@ -115,8 +117,17 @@
         min-width: 350px;
       }
     }
+    @media (min-width: 1024px) {
+      margin-left: 0px;
+      margin-right: 50px;
+    }
+    @media (min-width: 800px) {
+      margin-left: 0px;
+      margin-right: 0;
+    }
     @media (max-width: 600px) {
       min-width: 170px;
+      margin-left: 0;
     }
   }
 }

@@ -4,17 +4,18 @@ import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
 import Streamers from "@assets/images/PNG/Streamers.png";
 import Lights from "@assets/images/PNG/FairyLights.png";
+import heros from "@assets/images/Heros.png";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 666 });
 
   useEffect(() => {
     const header = document.querySelector("header");
-    const hero = document.querySelector(`.${styles.hero}`);
+    const hero = document.querySelector<HTMLDivElement>(`.${styles.hero}`);
     if (!header || !hero) return;
 
     const update = () => {
-      const top = hero.getBoundingClientRect().top;
+      const top = hero.getBoundingClientRect().top - 10;
 
       if (top <= 0) {
         header.style.top = "10px";
@@ -22,10 +23,17 @@ const Hero = () => {
           ? "calc(100% - 20px)"
           : "calc(1250px - 40px)";
       } else {
-        header.style.top = "60px";
+        if(isMobile){
+          header.style.top = "70px";
+        } else{
+          header.style.top = "90px";
+        }
         header.style.maxWidth = isMobile ? "100%" : "calc(1250px - 40px)";
       }
     };
+    if(isMobile){
+      hero.style.marginTop = "-20px";
+    }
 
     // Initial calculation
     update();
@@ -54,8 +62,7 @@ const Hero = () => {
         <div className={styles.hero}>
           <div className={styles.tagline}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
-              nisi!
+              Բարի գալուստ Մոնդեբոն
             </p>
             <button className={styles.explore} onClick={scrollToServices}>
               Explore Our Services
@@ -63,7 +70,7 @@ const Hero = () => {
           </div>
           <div className={styles.img}>
             <img
-              src="https://static.vecteezy.com/system/resources/previews/024/785/847/non_2x/3d-male-character-waving-free-png.png"
+              src={heros}
               alt="hero img"
               width="480"
               height="480"

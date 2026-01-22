@@ -2,17 +2,21 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const useGsapHero = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-
   const smaller = useMediaQuery({ maxWidth: 600 });
   const small = useMediaQuery({ maxWidth: 500 });
+  const animationsInitialized = useRef(false);
 
+  // Cloud parallax effect
   useGSAP(() => {
     const clouds = gsap.utils.toArray<HTMLElement>(".cloud");
+
+    if (clouds.length === 0) return;
 
     const factors = clouds.map(() => ({
       x: gsap.utils.random(-40, 40),
@@ -40,88 +44,117 @@ export const useGsapHero = () => {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
-  // Hero Right
-  useGSAP(() => {
-    setTimeout(() => {
-      gsap.from("#heroRight", {
-        x: 700,
-        opacity: 0,
-        scale: 0.8,
-        duration: 1.5,
-        ease: "power2.out",
+  // Hero animations with proper element checking
+  useEffect(() => {
+    if (animationsInitialized.current) return;
+
+    const initAnimations = () => {
+      const heroRight = document.getElementById("heroRight");
+      const heroLeft = document.getElementById("heroLeft");
+
+
+      if (!heroRight || !heroLeft) {
+        // Retry after a short delay if elements aren't ready
+        setTimeout(initAnimations, 50);
+        return;
+      }
+
+      animationsInitialized.current = true;
+
+      // Clear any existing ScrollTriggers
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.vars.trigger === heroRight ||
+          trigger.vars.trigger === heroLeft
+        ) {
+          trigger.kill();
+        }
       });
 
-      gsap.fromTo(
-        "#heroRight",
-        { x: 0, scale: 1 },
+      // Set initial states
+      gsap.set([heroRight, heroLeft], {
+        clearProps: "all", // Clear any existing transforms
+      });
+
+      gsap.set(heroRight, { x: 700, opacity: 0, scale: 0.6 });
+      gsap.set(heroLeft, { x: -700, opacity: 0, scale: 0.6 });
+
+      // Initial entrance animations
+      const tl = gsap.timeline({ delay: 1 }); // Increased delay to ensure page is loaded
+
+      tl.to(heroRight, {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+      }).to(
+        heroLeft,
         {
-          scrollTrigger: {
-            trigger: "#heroRight",
-            start: "top top",
-            end: `${isMobile ? "bottom+=200" : "bottom"} center`,
-            scrub: true,
-            markers: false,
-          },
-          x: 700,
-          scale: 0.6,
-          ease: "none",
-        }
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "-=1.2",
       );
 
-      ScrollTrigger.refresh();
-    }, 10);
-  }, []);
+      // Wait for entrance animation to complete before setting up scroll triggers
+      tl.call(() => {
+        // Scroll-triggered animations for heroRight
+        ScrollTrigger.create({
+          trigger: heroRight,
+          start: "top top",
+          end: isMobile ? "bottom+=200 top" : "bottom top",
+          scrub: 1,
+          markers: false,
+          animation: gsap.fromTo(
+            heroRight,
+            { x: 0, scale: 1, opacity: 1 },
+            { x: 700, scale: 0.6, opacity: 0.3, ease: "none" },
+          ),
+        });
 
-  // Hero Left
-  useGSAP(() => {
-    setTimeout(() => {
-      isMobile
-        ? gsap.from("#heroLeft", {
-            x: -700,
-            opacity: 0,
-            scale: 0.8,
-            duration: 1.5,
-            ease: "power2.out",
-          })
-        : null;
+        // Scroll-triggered animations for heroLeft
+        ScrollTrigger.create({
+          trigger: heroLeft,
+          start: small ? "-300px top" : smaller ? "-100px top" : "top top",
+          end: "bottom top",
+          scrub: 1,
+          markers: false,
+          animation: gsap.fromTo(
+            heroLeft,
+            { x: 0, scale: 1, opacity: 1 },
+            { x: -700, scale: 0.6, opacity: 0.3, ease: "none" },
+          ),
+        });
 
-      !isMobile
-        ? gsap.fromTo(
-            "#heroLeft",
-            { x: -700, opacity: 0, scale: 0.6 },
-            {
-              scrollTrigger: {
-                trigger: "#heroLeft",
-                start: "top bottom",
-                end: "top 40%",
-                scrub: true,
-                markers: false,
-              },
-              x: 0,
-              opacity: 1,
-              scale: 1,
-            }
-          )
-        : null;
+        ScrollTrigger.refresh();
+      });
+    };
 
-      gsap.fromTo(
-        "#heroLeft",
-        { x: 0, scale: 1 },
-        {
-          scrollTrigger: {
-            trigger: "#heroLeft",
-            start: `${small ? "-300px 0" : smaller ? "-100px 0px" : "top top"}`,
-            end: "bottom top",
-            scrub: true,
-            markers: false,
-          },
-          x: -700,
-          scale: 0.6,
-          opacity: 0,
+    // Start initialization after a delay to ensure DOM is ready
+    const timeoutId = setTimeout(initAnimations, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const triggerElement = trigger.vars.trigger as Element;
+        if (
+          triggerElement?.id === "heroRight" ||
+          triggerElement?.id === "heroLeft"
+        ) {
+          trigger.kill();
         }
-      );
+      });
+    };
+  }, [isMobile, smaller, small]);
 
+  // Refresh ScrollTrigger when media queries change
+  useEffect(() => {
+    if (animationsInitialized.current) {
       ScrollTrigger.refresh();
-    }, 10);
-  }, []);
+    }
+  }, [isMobile, smaller, small]);
 };
