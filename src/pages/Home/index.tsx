@@ -23,9 +23,9 @@ import galleryImg5 from "@/assets/images/IMG_9788.jpg";
 import galleryImg6 from "@/assets/images/IMG_9865.jpg";
 import galleryImg7 from "@/assets/images/IMG_9957.jpg";
 import Services from "@/components/Services";
-import axios from "axios";
 import Hero from "@/components/Hero";
 import type { ServicesData } from "@/types";
+import { servicesData } from "@/data/services";
 
 const Home = () => {
   const [data, setData] = useState<ServicesData[]>([]);
@@ -61,17 +61,11 @@ const Home = () => {
               img.onerror = () => reject();
             }),
         );
-        axios
-          .get<ServicesData[]>(
-            "https://6911fde452a60f10c8202df3.mockapi.io/services",
-          )
-          .then((res) => {
-            const filtered = res.data.filter((obj) => obj.is);
-            setData(filtered);
-          })
-          .catch((err) => console.error("services error:", err));
 
-        await Promise.all([...imagePromises, data]);
+        const filtered = servicesData.filter((obj) => obj.is);
+        setData(filtered);
+
+        await Promise.all(imagePromises);
 
         setIsLoading(false);
       } catch (err) {

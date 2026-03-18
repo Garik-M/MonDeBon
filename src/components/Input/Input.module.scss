@@ -3,7 +3,8 @@
 .wrapper {
   @include flex(start, $dir: column);
   position: relative;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   min-height: fit-content;
   height: 70px;
   border-radius: 10px;
