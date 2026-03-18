@@ -1,11 +1,11 @@
 import styles from "./MainHero.module.scss";
-import cloud1 from "@assets/images/cloud1.png";
-import cloud2 from "@assets/images/cloud2.png";
-import cloud3 from "@assets/images/cloud3.png";
-import cloud4 from "@assets/images/cloud4.png";
-import sky from "@/assets/images/sky.png";
-import Mon from "@assets/images/mon.png";
-import Bon from "@assets/images/Bon.png";
+import cloud1 from "@assets/images/cloud1.webp";
+import cloud2 from "@assets/images/cloud2.webp";
+import cloud3 from "@assets/images/cloud3.webp";
+import cloud4 from "@assets/images/cloud4.webp";
+import sky from "@/assets/images/sky.webp";
+import Mon from "@assets/images/mon.webp";
+import Bon from "@assets/images/Bon.webp";
 import { useGsapHero } from "@hooks/useGsapHero";
 
 const MainHero = () => {

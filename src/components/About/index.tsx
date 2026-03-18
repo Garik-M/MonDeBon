@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import styles from "./About.module.scss";
-import rainbow from "@assets/images/rainbow.png";
+import rainbow from "@assets/images/rainbow.webp";
 
 // Static content for better performance
 const ABOUT_CONTENT = {

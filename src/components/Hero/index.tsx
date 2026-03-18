@@ -4,7 +4,7 @@ import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
 import Streamers from "@assets/images/PNG/Streamers.png";
 import Lights from "@assets/images/PNG/FairyLights.png";
-import Heros from "@assets/images/heros.png";
+import Heros from "@assets/images/heros.webp";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 666 });

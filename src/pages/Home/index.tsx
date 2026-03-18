@@ -6,22 +6,20 @@ import ContactUs from "@/components/Contact";
 import Loading from "@/components/Loading";
 import { useEffect, useState } from "react";
 
-import cloud1 from "@/assets/images/cloud1.png";
-import cloud2 from "@/assets/images/cloud2.png";
-import cloud3 from "@/assets/images/cloud3.png";
-import cloud4 from "@/assets/images/cloud4.png";
-import img1 from "@/assets/images/1.jpg";
-import img3 from "@/assets/images/3.png";
-import rainbow from "@/assets/images/rainbow.png";
-import sky from "@/assets/images/sky.png";
+import cloud1 from "@/assets/images/cloud1.webp";
+import cloud2 from "@/assets/images/cloud2.webp";
+import cloud3 from "@/assets/images/cloud3.webp";
+import cloud4 from "@/assets/images/cloud4.webp";
+import rainbow from "@/assets/images/rainbow.webp";
+import sky from "@/assets/images/sky.webp";
 // Gallery images for preloading
-import galleryImg1 from "@/assets/images/IMG_0022.jpg";
-import galleryImg2 from "@/assets/images/IMG_0049.jpg";
-import galleryImg3 from "@/assets/images/IMG_9714.jpg";
-import galleryImg4 from "@/assets/images/IMG_9759.jpg";
-import galleryImg5 from "@/assets/images/IMG_9788.jpg";
-import galleryImg6 from "@/assets/images/IMG_9865.jpg";
-import galleryImg7 from "@/assets/images/IMG_9957.jpg";
+import galleryImg1 from "@/assets/images/IMG_0022.webp";
+import galleryImg2 from "@/assets/images/IMG_0049.webp";
+import galleryImg3 from "@/assets/images/IMG_9714.webp";
+import galleryImg4 from "@/assets/images/IMG_9759.webp";
+import galleryImg5 from "@/assets/images/IMG_9788.webp";
+import galleryImg6 from "@/assets/images/IMG_9865.webp";
+import galleryImg7 from "@/assets/images/IMG_9957.webp";
 import Services from "@/components/Services";
 import Hero from "@/components/Hero";
 import type { ServicesData } from "@/types";
@@ -39,8 +37,6 @@ const Home = () => {
           cloud2,
           cloud3,
           cloud4,
-          img1,
-          img3,
           rainbow,
           sky,
           galleryImg1,

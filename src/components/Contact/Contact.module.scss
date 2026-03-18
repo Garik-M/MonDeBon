@@ -41,11 +41,11 @@
 
         .maskImg {
           width: 100%;
-          mask-image: url("@assets/images/mask.png");
+          mask-image: url("@assets/images/mask.webp");
           mask-size: 95%;
           mask-position: center center;
           mask-repeat: no-repeat;
-          -webkit-mask-image: url("@assets/images/mask.png");
+          -webkit-mask-image: url("@assets/images/mask.webp");
           -webkit-mask-size: 95%;
           -webkit-mask-position: center center;
           -webkit-mask-repeat: no-repeat;

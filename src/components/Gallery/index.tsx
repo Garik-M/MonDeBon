@@ -2,13 +2,13 @@ import React, { memo, useState } from "react";
 import styles from "./Gallery.module.scss";
 
 // Import gallery images
-import img1 from "@assets/images/IMG_0022.jpg";
-import img2 from "@assets/images/IMG_0049.jpg";
-import img3 from "@assets/images/IMG_9714.jpg";
-import img4 from "@assets/images/IMG_9759.jpg";
-import img5 from "@assets/images/IMG_9788.jpg";
-import img6 from "@assets/images/IMG_9865.jpg";
-import img7 from "@assets/images/IMG_9957.jpg";
+import img1 from "@assets/images/IMG_0022.webp";
+import img2 from "@assets/images/IMG_0049.webp";
+import img3 from "@assets/images/IMG_9714.webp";
+import img4 from "@assets/images/IMG_9759.webp";
+import img5 from "@assets/images/IMG_9788.webp";
+import img6 from "@assets/images/IMG_9865.webp";
+import img7 from "@assets/images/IMG_9957.webp";
 
 // Gallery data
 const GALLERY_IMAGES = [

@@ -5,7 +5,7 @@ import Input from "@components/Input";
 import { inputArr, schema } from "@/utils";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import faces from "@assets/images/faces.png";
+import faces from "@assets/images/faces.webp";
 
 const ContactUs = () => {
   const form = useRef<HTMLFormElement>(null);
